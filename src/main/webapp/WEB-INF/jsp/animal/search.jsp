@@ -2,7 +2,14 @@
 
 <jsp:include page="../include/header.jsp"/>
 
-<h1>Animal Search</h1>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+<%--        <li class="breadcrumb-item"><a href="/home">Home</a></li>--%>
+<%--        <li class="breadcrumb-item"><a href="/animal/table/dog">Dogs</a></li>--%>
+        <li class="breadcrumb-item active" aria-current="page">Adoptable Animals</li>
+    </ol>
+</nav>
+
 <form action="/animal/search" method="get">
     <input type="text" placeholder=${searchValue} name="searchId"/>
     <button type="submit">Submit</button>

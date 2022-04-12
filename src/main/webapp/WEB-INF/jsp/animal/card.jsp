@@ -2,7 +2,15 @@
 
 <jsp:include page="../include/header.jsp"/>
 
-<div class="card" style="width: 18rem;">
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/animal/search">Adoptable Animals</a></li>
+        <li class="breadcrumb-item"><a href="/animal/table/${animal.species}">${animal.species}s</a></li>
+        <li class="breadcrumb-item active" aria-current="page">${animal.name}</li>
+    </ol>
+</nav>
+
+<div class="card" style="width: 18rem;margin: 0 auto; float: none; margin-bottom: 10px;">
     <img class="card-img-top" src="${animal.img_table}" alt="Animal image">
     <div class="card-body">
         <h5 class="card-title">Name: ${animal.name}</h5>

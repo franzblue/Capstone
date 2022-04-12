@@ -2,7 +2,13 @@
 
 <jsp:include page="../include/header.jsp"/>
 
-<h1>Animal Table</h1>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/animal/search">Adoptable Animals</a></li>
+        <li class="breadcrumb-item active" aria-current="page">${animals[0].species}s</li>
+    </ol>
+</nav>
+
 <div class="card-deck">
 
 <c:forEach items="${animals}" var="item">
