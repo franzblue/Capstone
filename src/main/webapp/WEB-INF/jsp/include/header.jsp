@@ -45,6 +45,9 @@
     <li class="nav-item">
         <a class="nav-link bannerLink" href="/../user/profile">Profile</a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link bannerLink" href="/login/logout">Log Out</a>
+    </li>
 </ul>
 <div class="header-row" id="header-row" style="padding: 0px; overflow:hidden;">
     <div class="container-fluid" style="padding: 0px;">
