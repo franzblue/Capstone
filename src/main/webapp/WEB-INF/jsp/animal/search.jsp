@@ -10,8 +10,76 @@
     </ol>
 </nav>
 
+<script>
+    function getSpecies(selectObject) {
+        var value = selectObject.value;
+        console.log("testing " + value);
+        $.ajax({
+            type: "GET",
+            url: "/animal/species",
+            data: {"species" : value},
+            success: function (response) {
+                $("body").html(response);
+            },
+            error: function (result) {
+                // do something.
+                console.log("species ?");
+            }
+        });
+    }
+    function getSex(selectObject) {
+        var value = selectObject.value;
+        console.log(value);
+        $.ajax({
+            type: "GET",
+            url: "/animal/sex",
+            data: {"sex" : value},
+            success: function (response) {
+                $("body").html(response);
+            },
+            error: function (result) {
+                // do something.
+                console.log("sex ?");
+            }
+        });
+    }
+    function getAge(selectObject) {
+        var value = selectObject.value;
+        console.log(value);
+        $.ajax({
+            type: "GET",
+            url: "/animal/age",
+            data: {"age" : value},
+            success: function (response) {
+                $("body").html(response);
+            },
+            error: function (result) {
+                // do something.
+                console.log("age ?");
+            }
+        });
+    }
+</script>
+
 <form action="/animal/search" method="get">
-    <input type="text" placeholder=${searchValue} name="searchId"/>
+    <select id="species" name="species" onchange="getSpecies(this)">
+        <option>Species</option>
+        <option value="Dog" name="species">Dogs</option>
+        <option value="Cat" name="species">Cats</option>
+        <option value="Other" name="species">Rabbits And Small Animals</option>
+        <div id="exampleDiv"></div>
+    </select>
+    <select action="/animal/species" id="sex" onchange="getSex(this)">
+        <option>Sex</option>
+        <option value="female">Female</option>
+        <option value="male">Male</option>
+    </select>
+    <select id="age" onchange="getAge(this)">
+        <option>Age</option>
+        <option value=6>Less Than 6 Months</option>
+        <option value=70>More Than 5 Years</option>
+    </select>
+    <input type="text" placeholder="${searchValue}" name="searchId"/>
     <button type="submit">Submit</button>
 </form>
 
@@ -36,5 +104,7 @@
         </tr>
     </c:forEach>
 </table>
+
+
 
 <jsp:include page="../include/footer.jsp"/>

@@ -30,4 +30,10 @@ public interface AnimalDAO extends JpaRepository<Animal, Long> {
     List<Animal> findAnimalsBySpeciesAndAge(@Param("species") String species, @Param("age") Integer age);
 
     List<Animal> findAnimalsBySpeciesAndBreed(@Param("species") String species, @Param("breed") String breed);
+
+    List<Animal> findAnimalsBySex(String searchValue);
+
+    List<Animal> findAnimalsByAgeLessThan(Integer searchValue);
+
+    List<Animal> findAnimalsByAgeGreaterThan(Integer searchValue);
 }

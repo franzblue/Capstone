@@ -81,20 +81,61 @@ public class AnimalController {
 
         // very basic example of error checking
         if(!StringUtils.isBlank(searchValue)) {
-            // do your query
             List<Animal> animals = animalDao.findAnimalsByNameContainingOrSpeciesContainingOrBreedContainingOrDescriptionContainingOrSexContaining(searchValue,searchValue,searchValue,searchValue,searchValue);
-            // this line puts the list of users that we just queried into the model
-            // the model is a map ( key:value store)
-            // any object of any kind can go into the model using this key value
-            // in this case it is a list of Users
             response.addObject("animals", animals);
+            log.info(animals.toString());
         } else {
             // make a placeholder value
             searchValue = "Search";
         }
 
         response.addObject("searchValue", searchValue);
+        log.info(response.toString());
 
         return response;
     }
+
+    @GetMapping("/animal/species")
+    public ModelAndView animalSearch1(@RequestParam(name = "species", required = false, defaultValue = "") String searchValue) {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("animal/search");
+
+        List<Animal> animals = animalDao.findAnimalsBySpecies(searchValue);
+
+        response.addObject("animals", animals);
+
+        return response;
+    }
+
+    @GetMapping("/animal/sex")
+    public ModelAndView animalSex(@RequestParam(name = "sex", required = false, defaultValue = "") String searchValue) {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("animal/search");
+
+        List<Animal> animals = animalDao.findAnimalsBySex(searchValue);
+
+        response.addObject("animals", animals);
+
+        return response;
+    }
+
+    @GetMapping("/animal/age")
+    public ModelAndView animalAge(@RequestParam(name = "age", required = false, defaultValue = "") Integer searchValue) {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("animal/search");
+
+        log.info("value", searchValue);
+
+        if(searchValue == 6) {
+            List<Animal> animals = animalDao.findAnimalsByAgeLessThan(searchValue);
+            response.addObject("animals", animals);
+
+        } else if (searchValue == 70 ) {
+            List<Animal> animals = animalDao.findAnimalsByAgeGreaterThan(searchValue);
+            response.addObject("animals", animals);
+        }
+
+        return response;
+    }
+
 }
