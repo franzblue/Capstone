@@ -11,7 +11,7 @@
 </nav>
 
 <div class="card" style="width: 18rem;margin: 0 auto; float: none; margin-bottom: 10px;">
-    <img class="card-img-top" src="${animal.img_table}" alt="Animal image">
+    <img class="card-img-top" src="${animal.image}" alt="Animal image">
     <div class="card-body">
         <h5 class="card-title">Name: ${animal.name}</h5>
         <p class="card-text">Description: ${animal.description}</p>

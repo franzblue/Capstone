@@ -36,4 +36,5 @@ public interface AnimalDAO extends JpaRepository<Animal, Long> {
     List<Animal> findAnimalsByAgeLessThan(Integer searchValue);
 
     List<Animal> findAnimalsByAgeGreaterThan(Integer searchValue);
+
 }

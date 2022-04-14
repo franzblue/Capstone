@@ -26,7 +26,7 @@
 
 
     <div class="card">
-        <img class="card-img-top" src="${item.img_table}" alt="Card image cap">
+        <img class="card-img-top" src="${item.image}" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">${item.name}</h5>
             <p class="card-text">${item.description}</p>

@@ -36,7 +36,7 @@ public class Animal {
     @Column(name = "sex")
     private String sex;
 
-    @Column(name = "img_table")
-    private String img_table;
+    @Column(name = "image")
+    private String image;
 
 }
