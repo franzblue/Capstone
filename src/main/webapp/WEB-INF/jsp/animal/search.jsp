@@ -83,27 +83,27 @@
     <button type="submit">Submit</button>
 </form>
 
-<table class="table">
-    <tr scope="row">
-        <th>Name</th>
-        <th>Species</th>
-        <th>Breed</th>
-        <th>Description</th>
-        <th>Age</th>
-        <th>Sex</th>
-    </tr>
+<%--<table class="table">--%>
+<%--    <tr scope="row">--%>
+<%--        <th>Name</th>--%>
+<%--        <th>Species</th>--%>
+<%--        <th>Breed</th>--%>
+<%--        <th>Description</th>--%>
+<%--        <th>Age</th>--%>
+<%--        <th>Sex</th>--%>
+<%--    </tr>--%>
 
-    <c:forEach items="${animals}" var="animal">
-        <tr scope="row">
-            <td>${animal.name}</td>
-            <td>${animal.species}</td>
-            <td>${animal.breed}</td>
-            <td>${animal.description}</td>
-            <td>${animal.age}</td>
-            <td>${animal.sex}</td>
-        </tr>
-    </c:forEach>
-</table>
+<%--    <c:forEach items="${animals}" var="animal">--%>
+<%--        <tr scope="row">--%>
+<%--            <td>${animal.name}</td>--%>
+<%--            <td>${animal.species}</td>--%>
+<%--            <td>${animal.breed}</td>--%>
+<%--            <td>${animal.description}</td>--%>
+<%--            <td>${animal.age}</td>--%>
+<%--            <td>${animal.sex}</td>--%>
+<%--        </tr>--%>
+<%--    </c:forEach>--%>
+<%--</table>--%>
 
 
 

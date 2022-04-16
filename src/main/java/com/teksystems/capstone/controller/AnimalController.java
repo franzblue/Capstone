@@ -32,6 +32,13 @@ public class AnimalController {
     @RequestMapping(value = "/animal/table/{species}", method = RequestMethod.GET)
     public ModelAndView animalTable(@PathVariable("species") String species) throws Exception {
         ModelAndView response = new ModelAndView();
+        response.setViewName("animal/table");
+
+        if(species.equals("all")) {
+            List<Animal> animals = animalDao.findAll();
+            response.addObject("animals", animals);
+            return response;
+        }
 
         List<Animal> animals = animalDao.findAnimalsBySpecies(species);
 
@@ -57,7 +64,7 @@ public class AnimalController {
 
         log.info(response.toString());
 
-        response.setViewName("animal/table");
+
 
         log.info(response.getModel().toString());
 
@@ -80,7 +87,7 @@ public class AnimalController {
     @GetMapping("/animal/search")
     public ModelAndView animalSearch(@RequestParam(name = "searchId", required = false, defaultValue = "") String searchValue) {
         ModelAndView response = new ModelAndView();
-        response.setViewName("animal/search");
+        response.setViewName("animal/table");
         log.info(searchValue);
 
 
@@ -103,7 +110,7 @@ public class AnimalController {
     @GetMapping("/animal/species")
     public ModelAndView animalSearch1(@RequestParam(name = "species", required = false, defaultValue = "") String searchValue) {
         ModelAndView response = new ModelAndView();
-        response.setViewName("animal/search");
+        response.setViewName("animal/table");
 
         List<Animal> animals = animalDao.findAnimalsBySpecies(searchValue);
 
@@ -115,7 +122,7 @@ public class AnimalController {
     @GetMapping("/animal/sex")
     public ModelAndView animalSex(@RequestParam(name = "sex", required = false, defaultValue = "") String searchValue) {
         ModelAndView response = new ModelAndView();
-        response.setViewName("animal/search");
+        response.setViewName("animal/table");
 
         List<Animal> animals = animalDao.findAnimalsBySex(searchValue);
 
@@ -127,7 +134,7 @@ public class AnimalController {
     @GetMapping("/animal/age")
     public ModelAndView animalAge(@RequestParam(name = "age", required = false, defaultValue = "") Integer searchValue) {
         ModelAndView response = new ModelAndView();
-        response.setViewName("animal/search");
+        response.setViewName("animal/table");
 
         log.info("value", searchValue);
 

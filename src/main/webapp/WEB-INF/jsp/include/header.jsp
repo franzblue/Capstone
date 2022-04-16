@@ -1,3 +1,4 @@
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -18,61 +19,38 @@
 
 
 <body>
-<ul class="nav justify-content-end">
-    <li class="nav-item">
-        <a class="nav-link active bannerLink" href="/../home">Home</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link active bannerLink" href="/../animal/how">How To Help</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link active bannerLink" href="/../user/register">Register User</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link active bannerLink" href="/../user/search">User Search</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link active bannerLink" href="/../animal/addAnimal">Add Animal</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link active bannerLink" href="/../animal/search">Animal Search</a>
-    </li>
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle bannerLink" data-toggle="dropdown" href="#"
-           role="button" aria-haspopup="true" aria-expanded="false">Available Pets</a>
-        <div class="dropdown-menu"  id="myDropdown">
-            <a class="dropdown-item" href="/../animal/table/dog">Dogs</a>
-            <a class="dropdown-item" href="/../animal/table/cat">Cats</a>
-            <a class="dropdown-item" href="/../animal/table/other">Other Animals</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Separated link</a>
-        </div>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link bannerLink" href="/../user/profile">Profile</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link bannerLink" href="/login/logout">Log Out</a>
-    </li>
-</ul>
-<div class="header-row" id="header-row" style="padding: 0px; overflow:hidden;">
-    <div class="container-fluid" style="padding: 0px;">
-        <div class="row">
-            <div class="col-xs-12 bannerDiv">
-                <a class="logo" href="main.html">
-                    <img src="../../../pub/images/banner.jpg" alt="company logo" style="width: 100%;">
-                </a>
-            </div>
-        </div>
-    </div>
-    <sec:authorize access="!isAuthenticated()">
-        | <a href="/login/login">Log In</a>
-    </sec:authorize>
-    <sec:authorize access="isAuthenticated()">
-        | <a href="/login/logout">Log Out</a>
-        <sec:authentication property="principal.username" />
-    </sec:authorize>
-</div>
+<%--<ul class="nav justify-content-end">--%>
+
+<%--    <li class="nav-item">--%>
+<%--        <a class="nav-link active bannerLink" href="/../animal/how">How To Help</a>--%>
+<%--    </li>--%>
+<%--    <li class="nav-item">--%>
+<%--        <a class="nav-link active bannerLink" href="/../login/register">Register User</a>--%>
+<%--    </li>--%>
+<%--    <li class="nav-item">--%>
+<%--        <a class="nav-link active bannerLink" href="/../user/search">User Search</a>--%>
+<%--    </li>--%>
+<%--    <li class="nav-item">--%>
+<%--        <a class="nav-link active bannerLink" href="/../animal/addAnimal">Add Animal</a>--%>
+<%--    </li>--%>
+<%--    <li class="nav-item">--%>
+<%--        <a class="nav-link active bannerLink" href="/../animal/search">Animal Search</a>--%>
+<%--    </li>--%>
+<%--    <li class="nav-item">--%>
+<%--        <a class="nav-link bannerLink" href="/../user/profile">Profile</a>--%>
+<%--    </li>--%>
+<%--    <li class="nav-item">--%>
+<%--        <a class="nav-link bannerLink" href="/login/logout">Log Out</a>--%>
+<%--    </li>--%>
+<%--</ul>--%>
+
+<%--<sec:authorize access="!isAuthenticated()">--%>
+<%--| <a href="/login/login">Log In</a>--%>
+<%--</sec:authorize>--%>
+<%--<sec:authorize access="isAuthenticated()">--%>
+<%--| <a href="/login/logout">Log Out</a>--%>
+<%--    <sec:authentication property="principal.username" />--%>
+<%--</sec:authorize>--%>
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js">
     <%--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>--%>
@@ -88,4 +66,44 @@
 <%--    <a href="/user/register">Sign Up</a> |--%>
 <%--    <a href="/user/search">Search</a>--%>
 
+
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="/../index">All Paws On Deck!</a>
+        Welcome, <sec:authentication property="principal.username"/>!
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                <li class="nav-item"><a class="nav-link" href="/../home">Home</a></li>
+
+                <sec:authorize access="!isAuthenticated()">
+                    | <a href="/login/login">Log In</a>
+                </sec:authorize>
+                <sec:authorize access="isAuthenticated()">
+                    <li class="nav-item"><a class="nav-link" href="/../user/profile/${principal.username}">Profile</a></li>
+                </sec:authorize>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Animals</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/../animal/table/all">All Animals</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="/../animal/table/dog">Dogs</a></li>
+                        <li><a class="dropdown-item" href="/../animal/table/cat">Cats</a></li>
+                        <li><a class="dropdown-item" href="/../animal/table/other">Other Animals</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="/../cart/shop">Shop</a></li>
+            </ul>
+            <form class="d-flex">
+                <button class="btn btn-outline-dark" type="submit">
+                    <i class="bi-cart-fill me-1"></i>
+                    Cart
+                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                </button>
+            </form>
+        </div>
+    </div>
+</nav>
     <hr>
