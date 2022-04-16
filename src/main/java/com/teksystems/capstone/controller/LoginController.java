@@ -72,6 +72,13 @@ public class LoginController {
         user.setLastName(form.getLastName());
         user.setPassword(form.getPassword());
         user.setUsername(form.getUsername());
+        user.setDogLove(form.getDogLove());
+        user.setCatLove(form.getCatLove());
+        user.setSmallLove(form.getSmallLove());
+        user.setImage(form.getImage());
+        user.setTelephone(form.getTelephone());
+        user.setAddress(form.getAddress());
+        user.setDescription(form.getDescription());
 
         userDao.save(user);
 

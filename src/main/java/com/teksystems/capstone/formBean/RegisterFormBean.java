@@ -41,4 +41,18 @@ public class RegisterFormBean {
     @NotBlank(message = "Confirm password may not be empty.")
     private String confirmPassword;
 
+    private Integer dogLove;
+
+    private Integer catLove;
+
+    private Integer smallLove;
+
+    private String image;
+
+    private String telephone;
+
+    private String address;
+
+    private String description;
+
 }

@@ -1,89 +1,78 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<jsp:include page="../include/header.jsp"/>
-
-<c:choose>
-
-    <c:when test = "${empty form.id}">
-        <h1>Sign Up</h1>
-    </c:when>
-
-    <c:when test = "${not empty form.id}">
-        <h1>Edit User</h1>
-    </c:when>
+<%--<jsp:include page="../include/header.jsp"/>--%>
 
 
-</c:choose>
 
-<form action="/login/registerSubmit" method="post">
+<%--<form action="/login/registerSubmit" method="post">--%>
 
-    <input type="hidden" name="id" value="${form.id}">
-    First Name<input type="text" name="firstName" id="firstNameId" value="${form.firstName}">
-    <c:forEach items="${bindingResult.getFieldErrors('firstName')}" var="error">
-        <div style="color: red;">
-                ${error.getDefaultMessage()}
-        </div>
-    </c:forEach>
-    <br>
-    Last Name<input type="text" name="lastName" id="lastNameId" value="${form.lastName}">
-    <c:forEach items="${bindingResult.getFieldErrors('lastName')}" var="error">
-        <div style="color: red;">
-                ${error.getDefaultMessage()}
-        </div>
-    </c:forEach>
-    <br>
-    Email <input type="email" name="email" id="emailId" value="${form.email}">
-    <c:forEach items="${bindingResult.getFieldErrors('email')}" var="error">
-        <div style="color: red;">
-                ${error.getDefaultMessage()}
-        </div>
-    </c:forEach>
-    <br>
-    Username <input type="text" name="username" id="usernameId" value="${form.username}">
-    <c:forEach items="${bindingResult.getFieldErrors('username')}" var="error">
-        <div style="color: red;">
-                ${error.getDefaultMessage()}
-        </div>
-    </c:forEach>
-    <br>
-    Password <input type="password" name="password" id="passwordId" value="${form.password}">
-    <c:forEach items="${bindingResult.getFieldErrors('password')}" var="error">
-        <div style="color: red;">
-                ${error.getDefaultMessage()}
-        </div>
-    </c:forEach>
-    <br>
-    Confirm Password <input type="password" name="confirmPassword" id="confirmPasswordId" value="${form.confirmPassword}">
-    <c:forEach items="${bindingResult.getFieldErrors('confirmPassword')}" var="error">
-        <div style="color: red;">
-                ${error.getDefaultMessage()}
-        </div>
-    </c:forEach>
-    <br>
+<%--    <input type="hidden" name="id" value="${form.id}">--%>
+<%--    First Name<input type="text" name="firstName" id="firstNameId" value="${form.firstName}">--%>
+<%--    <c:forEach items="${bindingResult.getFieldErrors('firstName')}" var="error">--%>
+<%--        <div style="color: red;">--%>
+<%--                ${error.getDefaultMessage()}--%>
+<%--        </div>--%>
+<%--    </c:forEach>--%>
 <%--    <br>--%>
-<%--    Check Box<input type="checkbox" name="checkbox">--%>
+<%--    Last Name<input type="text" name="lastName" id="lastNameId" value="${form.lastName}">--%>
+<%--    <c:forEach items="${bindingResult.getFieldErrors('lastName')}" var="error">--%>
+<%--        <div style="color: red;">--%>
+<%--                ${error.getDefaultMessage()}--%>
+<%--        </div>--%>
+<%--    </c:forEach>--%>
 <%--    <br>--%>
+<%--    Email <input type="email" name="email" id="emailId" value="${form.email}">--%>
+<%--    <c:forEach items="${bindingResult.getFieldErrors('email')}" var="error">--%>
+<%--        <div style="color: red;">--%>
+<%--                ${error.getDefaultMessage()}--%>
+<%--        </div>--%>
+<%--    </c:forEach>--%>
+<%--    <br>--%>
+<%--    Username <input type="text" name="username" id="usernameId" value="${form.username}">--%>
+<%--    <c:forEach items="${bindingResult.getFieldErrors('username')}" var="error">--%>
+<%--        <div style="color: red;">--%>
+<%--                ${error.getDefaultMessage()}--%>
+<%--        </div>--%>
+<%--    </c:forEach>--%>
+<%--    <br>--%>
+<%--    Password <input type="password" name="password" id="passwordId" value="${form.password}">--%>
+<%--    <c:forEach items="${bindingResult.getFieldErrors('password')}" var="error">--%>
+<%--        <div style="color: red;">--%>
+<%--                ${error.getDefaultMessage()}--%>
+<%--        </div>--%>
+<%--    </c:forEach>--%>
+<%--    <br>--%>
+<%--    Confirm Password <input type="password" name="confirmPassword" id="confirmPasswordId" value="${form.confirmPassword}">--%>
+<%--    <c:forEach items="${bindingResult.getFieldErrors('confirmPassword')}" var="error">--%>
+<%--        <div style="color: red;">--%>
+<%--                ${error.getDefaultMessage()}--%>
+<%--        </div>--%>
+<%--    </c:forEach>--%>
+<%--    <br>--%>
+<%--&lt;%&ndash;    <br>&ndash;%&gt;--%>
+<%--&lt;%&ndash;    Check Box<input type="checkbox" name="checkbox">&ndash;%&gt;--%>
+<%--&lt;%&ndash;    <br>&ndash;%&gt;--%>
 
-    <div class="slidecontainer">
-        <input type="range" min="1" max="100" value="50" class="slider" id="dogRange">
-<%--            <div id="dogRangeValue"></div>--%>
-        <div id="dogRangeValue"></div>
-    </div>
-    <div class="slidecontainer">
-        <input type="range" min="1" max="100" value="50" class="slider" id="catRange">
-<%--            <div id="catRangeValue"></div>--%>
-        <div id="catRangeValue"></div>
-    </div>
-    <div class="slidecontainer">
-        <input type="range" min="1" max="100" value="50" class="slider" id="otherRange">
-<%--            <div id="otherRangeValue"></div>--%>
-        <div id="otherRangeValue"></div>
-    </div>
+<%--    <div class="slidecontainer">--%>
+<%--        <input type="range" min="1" max="100" value="50" class="slider" id="dogRange">--%>
+<%--&lt;%&ndash;            <div id="dogRangeValue"></div>&ndash;%&gt;--%>
+<%--        <div id="dogRangeValue"></div>--%>
+<%--    </div>--%>
+<%--    <div class="slidecontainer">--%>
+<%--        <input type="range" min="1" max="100" value="50" class="slider" id="catRange">--%>
+<%--&lt;%&ndash;            <div id="catRangeValue"></div>&ndash;%&gt;--%>
+<%--        <div id="catRangeValue"></div>--%>
+<%--    </div>--%>
+<%--    <div class="slidecontainer">--%>
+<%--        <input type="range" min="1" max="100" value="50" class="slider" id="otherRange">--%>
+<%--&lt;%&ndash;            <div id="otherRangeValue"></div>&ndash;%&gt;--%>
+<%--        <div id="otherRangeValue"></div>--%>
+<%--    </div>--%>
 
-    <br>
-    <button type="submit">Submit</button>
+<%--    <br>--%>
+<%--    <button type="submit">Submit</button>--%>
 
-</form>
+<%--</form>--%>
 
 <%--<script>--%>
 
@@ -110,6 +99,130 @@
 <%--    });--%>
 
 <%--</script>--%>
+
+
+<div class="card" style="width: 18rem;margin: 0 auto; float: none; margin-bottom: 10px;">
+    <c:choose>
+
+        <c:when test = "${empty form.id}">
+            <h1>Sign Up</h1>
+        </c:when>
+
+        <c:when test = "${not empty form.id}">
+            <h1>Edit User</h1>
+        </c:when>
+
+    </c:choose>
+    <form class="form-horizontal" action="/login/registerSubmit" method="post">
+        <div class="form-group">
+            <input type="hidden" name="id" value="${form.id}">
+            <label for="firstNameId" class="col-sm-2 control-label">First Name: </label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="firstName" id="firstNameId" placeholder="First Name" value="${form.firstName}">
+            </div>
+        </div>
+        <c:forEach items="${bindingResult.getFieldErrors('firstName')}" var="error">
+            <div style="color: red;">
+                    ${error.getDefaultMessage()}
+            </div>
+        </c:forEach>
+        <div class="form-group">
+            <label for="lastNameId" class="col-sm-2 control-label">Last Name: </label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="lastName" id="lastNameId" placeholder="Last Name" value="${form.lastName}">
+            </div>
+        </div>
+        <c:forEach items="${bindingResult.getFieldErrors('lastName')}" var="error">
+            <div style="color: red;">
+                    ${error.getDefaultMessage()}
+            </div>
+        </c:forEach>
+
+        <c:if test="${not empty form.email}">
+            <div class="form-group">
+                <label for="emailId" class="col-sm-2 control-label disabled">Email: </label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" name="email" id="emailId" placeholder="Email" value="${form.email}" disabled>
+                </div>
+            </div>
+        </c:if>
+
+        <c:if test="${empty form.email}">
+            <div class="form-group">
+                <label for="emailId" class="col-sm-2 control-label disabled">Email: </label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" name="email" id="emailId" placeholder="Email" value="${form.email}">
+                </div>
+            </div>
+        </c:if>
+
+
+
+
+
+        <c:forEach items="${bindingResult.getFieldErrors('email')}" var="error">
+            <div style="color: red;">
+                    ${error.getDefaultMessage()}
+            </div>
+        </c:forEach>
+        <div class="form-group">
+            <label for="usernameId" class="col-sm-2 control-label">Username: </label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="username" id="usernameId" placeholder="Username" value="${form.username}">
+            </div>
+        </div>
+        <c:forEach items="${bindingResult.getFieldErrors('username')}" var="error">
+            <div style="color: red;">
+                    ${error.getDefaultMessage()}
+            </div>
+        </c:forEach>
+        <div class="form-group">
+            <label for="passwordId" class="col-sm-2 control-label">Password: </label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" name="password" id="passwordId" placeholder="Password" value="${form.password}">
+            </div>
+        </div>
+        <c:forEach items="${bindingResult.getFieldErrors('password')}" var="error">
+            <div style="color: red;">
+                    ${error.getDefaultMessage()}
+            </div>
+        </c:forEach>
+        <div class="form-group">
+            <label for="confirmPasswordId" class="col-sm-2 control-label">ConfirmPassword: </label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" name="confirmPassword" id="confirmPasswordId" placeholder="Confirm Password" value="${form.password}">
+            </div>
+        </div>
+        <c:forEach items="${bindingResult.getFieldErrors('confirmPassword')}" var="error">
+            <div style="color: red;">
+                    ${error.getDefaultMessage()}
+            </div>
+        </c:forEach>
+        <div class="slidecontainer">
+            <label for="dogRange" class="col-sm-2 control-label">Dog Person: </label>
+            <br>
+            <input type="range" min="1" max="100" value="50" class="slider" id="dogRange" value="${form.dogLove}">
+            <div id="dogRangeValue"></div>
+        </div>
+        <div class="slidecontainer">
+            <label for="catRange" class="col-sm-2 control-label">Cat Person: </label>
+            <br>
+            <input type="range" min="1" max="100" value="50" class="slider" id="catRange" value="${form.catLove}">
+            <div id="catRangeValue"></div>
+        </div>
+        <div class="slidecontainer">
+            <label for="otherRange" class="col-sm-2 control-label">Small Animals: </label>
+            <br>
+            <input type="range" min="1" max="100" value="50" class="slider" id="otherRange" value="${form.smallLove}">
+            <div id="otherRangeValue"></div>
+        </div>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+
+
 
 <script>
     var dogSlider = document.getElementById("dogRange");
@@ -138,4 +251,4 @@
     }
 </script>
 
-<jsp:include page="../include/footer.jsp"/>
+<%--<jsp:include page="../include/footer.jsp"/>--%>

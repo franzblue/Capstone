@@ -123,12 +123,12 @@
             <small class="text-muted">Last updated 3 mins ago</small>
         </div>
     </div>
-    <div class="col-sm-4" style="border: solid #555555">
-        <p class="card-text">Age: ${item.age}</p>
-        <p class="card-text">Sex: ${item.sex}</p>
-        <p class="card-text">Species: ${item.species}</p>
-        <p class="card-text">Breed: ${item.breed}</p>
-    </div>
+<div class="col-sm-4" style="border: solid #555555">
+    <p class="card-text">Age: ${item.age}</p>
+    <p class="card-text">Sex: ${item.sex}</p>
+    <p class="card-text">Species: ${item.species}</p>
+    <p class="card-text">Breed: ${item.breed}</p>
+</div>
 
 
 

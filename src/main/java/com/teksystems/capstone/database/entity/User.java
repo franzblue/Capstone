@@ -33,4 +33,25 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "dog_love")
+    private Integer dogLove;
+
+    @Column(name = "cat_love")
+    private Integer catLove;
+
+    @Column(name = "small_love")
+    private Integer smallLove;
+
+    @Column(name = "image")
+    private String image;
+
+    @Column(name = "telephone")
+    private String telephone;
+
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "description")
+    private String description;
+
 }

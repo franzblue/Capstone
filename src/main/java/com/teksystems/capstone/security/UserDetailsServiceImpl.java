@@ -48,8 +48,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         // setup user roles
         Collection<? extends GrantedAuthority> springRoles = buildGrantAuthorities(userRoles);
 
+        if(user != null) {
+            username = user.getUsername();
+        }
+
         // gets the encrypted password from the database
-        username = user.getUsername();
         String password = user.getPassword();
 
         return new org.springframework.security.core.userdetails.User(

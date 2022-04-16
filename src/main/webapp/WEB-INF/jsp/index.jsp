@@ -101,7 +101,10 @@
                 </a>
             </div>
             <div class="well">
-                <img src="../../../pub/images/placeholder.png">
+                <a href="/cart/shop">
+                    <img src="../../../pub/images/placeholder.png">
+                    <p>Need some supplies? Shop here!</p>
+                </a>
             </div>
         </div>
     </div>

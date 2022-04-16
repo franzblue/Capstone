@@ -63,7 +63,44 @@ public class UserController {
         form.setUsername(loggedInUser.getUsername());
         form.setPassword(loggedInUser.getPassword());
         form.setConfirmPassword(loggedInUser.getPassword());
+        form.setDogLove(loggedInUser.getDogLove());
+        form.setCatLove(loggedInUser.getCatLove());
+        form.setSmallLove(loggedInUser.getSmallLove());
+        form.setImage(loggedInUser.getImage());
+        form.setTelephone(loggedInUser.getTelephone());
+        form.setAddress(loggedInUser.getAddress());
+        form.setDescription(loggedInUser.getDescription());
 
+        response.addObject("form", form);
+
+        return response;
+    }
+
+    @RequestMapping(value = "/user/edit/{userId}", method = RequestMethod.GET)
+    public ModelAndView editUser(@PathVariable("userId") Integer userId) throws Exception {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("login/register");
+
+        User user = userDao.findById(userId);
+
+        RegisterFormBean form = new RegisterFormBean();
+
+        form.setId(user.getId());
+        form.setEmail(user.getEmail());
+        form.setFirstName(user.getFirstName());
+        form.setLastName(user.getLastName());
+        form.setUsername(user.getUsername());
+        form.setPassword(user.getPassword());
+        form.setConfirmPassword(user.getPassword());
+        form.setDogLove(user.getDogLove());
+        form.setCatLove(user.getCatLove());
+        form.setSmallLove(user.getSmallLove());
+        form.setImage(user.getImage());
+        form.setTelephone(user.getTelephone());
+        form.setAddress(user.getAddress());
+        form.setDescription(user.getDescription());
+
+        // in this case we are adding the RegisterFormBean to the model
         response.addObject("form", form);
 
         return response;
