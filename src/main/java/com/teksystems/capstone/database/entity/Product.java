@@ -6,8 +6,6 @@ import org.hibernate.validator.constraints.Length;
 import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Min;
-import java.math.BigDecimal;
-import java.util.Date;
 import java.util.Set;
 
 @Getter

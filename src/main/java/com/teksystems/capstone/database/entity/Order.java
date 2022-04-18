@@ -20,13 +20,13 @@ public class Order {
     @Column(name = "id")
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
-
     @Column(name = "status")
     private String status;
-
+//
+//    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+//    @JoinColumn(name = "user_id", nullable = false)
+//    private User user;
+//
 //    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY,
 //            cascade = CascadeType.ALL)
 //    private Set<OrderProduct> orderProducts;

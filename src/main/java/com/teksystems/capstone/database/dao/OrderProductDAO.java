@@ -16,9 +16,9 @@ public interface OrderProductDAO extends JpaRepository<OrderProduct, Long> {
     public OrderProduct findById(@Param("id") Integer id);
 
     // this is not necessarily in scope for the case study
-//    @Query(value=" select product_id, count(*) as cnt, p.name from order_products op, products p where op.product_id = p.id group by product_id",
-//            nativeQuery = true)
-//    List<Map<String,Object>> getProductNameAndOderCount();
+    @Query(value=" select product_id, count(*) as cnt, p.name from order_products op, products p where op.product_id = p.id group by product_id",
+            nativeQuery = true)
+    List<Map<String,Object>> getProductNameAndOderCount();
 
     // in your JSP you can do a for each
     // for each orderProduct var=op

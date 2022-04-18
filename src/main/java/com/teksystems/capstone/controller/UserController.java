@@ -2,6 +2,7 @@ package com.teksystems.capstone.controller;
 
 import com.teksystems.capstone.database.dao.UserDAO;
 import com.teksystems.capstone.database.entity.User;
+import com.teksystems.capstone.formBean.EditFormBean;
 import com.teksystems.capstone.formBean.RegisterFormBean;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -70,6 +71,7 @@ public class UserController {
         form.setTelephone(loggedInUser.getTelephone());
         form.setAddress(loggedInUser.getAddress());
         form.setDescription(loggedInUser.getDescription());
+        form.setBlurb(loggedInUser.getBlurb());
 
         response.addObject("form", form);
 
@@ -99,8 +101,129 @@ public class UserController {
         form.setTelephone(user.getTelephone());
         form.setAddress(user.getAddress());
         form.setDescription(user.getDescription());
+        form.setBlurb(user.getBlurb());
 
         // in this case we are adding the RegisterFormBean to the model
+        response.addObject("form", form);
+
+        return response;
+    }
+
+
+
+
+
+    @RequestMapping(value = "/user/editSubmit/{userId}", method = RequestMethod.POST)
+    public ModelAndView editUserSubmit(@Valid EditFormBean form, BindingResult bindingResult) throws Exception {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("redirect:/user/profile");
+
+        log.info(form.toString());
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipleName = authentication.getName();
+        User loggedInUser = userDao.findUserByUsername(currentPrincipleName);
+        log.info(loggedInUser.toString());
+
+        if (bindingResult.hasErrors()) {
+
+            for (ObjectError error : bindingResult.getAllErrors()) {
+                log.info(((FieldError) error).getField() + ": " + error.getDefaultMessage());
+            }
+            response.addObject("bindingResult", bindingResult);
+
+            response.addObject("form", form);
+
+            Integer userId = loggedInUser.getId();
+
+            response.setViewName("/user/edit/{userId}");
+            return response;
+        }
+
+        User user = userDao.findById(loggedInUser.getId());
+
+
+        user.setEmail(loggedInUser.getEmail());
+        user.setId(loggedInUser.getId());
+        user.setPassword(loggedInUser.getPassword());
+
+        form.setEmail(loggedInUser.getEmail());
+        form.setId(loggedInUser.getId());
+        form.setPassword(loggedInUser.getPassword());
+
+
+        if(form.getFirstName().equals(loggedInUser.getFirstName())) {
+            user.setFirstName(loggedInUser.getFirstName());
+        } else {
+            user.setFirstName(form.getFirstName());
+        }
+
+        if(form.getLastName().equals(loggedInUser.getLastName())) {
+            user.setLastName(loggedInUser.getLastName());
+        } else {
+            user.setFirstName(form.getLastName());
+        }
+
+        // changing loggedIn.username is tricky...
+//        if(form.getUsername().equals(loggedInUser.getUsername())) {
+//            user.setUsername(loggedInUser.getUsername());
+//        } else {
+//            user.setUsername(form.getUsername());
+//            loggedInUser.setUsername(form.getUsername());
+//            log.info(loggedInUser.toString());
+//        }
+
+        if(form.getDogLove() == loggedInUser.getDogLove()) {
+            user.setDogLove(loggedInUser.getDogLove());
+        } else {
+            user.setDogLove(form.getDogLove());
+        }
+
+        if(form.getCatLove() == loggedInUser.getCatLove()) {
+            user.setCatLove(loggedInUser.getCatLove());
+        } else {
+            user.setCatLove(form.getCatLove());
+        }
+
+        if(form.getSmallLove() == loggedInUser.getSmallLove()) {
+            user.setSmallLove(loggedInUser.getSmallLove());
+        } else {
+            user.setSmallLove(form.getSmallLove());
+        }
+
+//        if(form.getImage().equals(loggedInUser.getImage())) {
+//            user.setImage(loggedInUser.getImage());
+//        } else {
+//            user.setImage(form.getImage());
+//        }
+//
+//        if(form.getTelephone().equals(loggedInUser.getTelephone())) {
+//            user.setTelephone(loggedInUser.getTelephone());
+//        } else {
+//            user.setTelephone(form.getTelephone());
+//        }
+//
+//        if(form.getAddress().equals(loggedInUser.getAddress())) {
+//            user.setAddress(loggedInUser.getAddress());
+//        } else {
+//            user.setAddress(form.getAddress());
+//        }
+//
+//        if(form.getBlurb().equals(loggedInUser.getBlurb())) {
+//            user.setBlurb(loggedInUser.getBlurb());
+//        } else {
+//            user.setBlurb(form.getBlurb());
+//        }
+
+
+
+
+        log.info("Edit User: ", user.toString());
+
+        userDao.save(user);
+
+
+
         response.addObject("form", form);
 
         return response;

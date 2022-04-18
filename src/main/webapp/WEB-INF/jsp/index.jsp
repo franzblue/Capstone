@@ -58,15 +58,15 @@
     </div>
 </div>
 
-<div class="container-fluid text-center">
+<div class="container-fluid text-center" style="margin-bottom: 100px">
     <div class="row content">
         <div class="col-sm-2 sidenav">
             <a href="/../animal/table/dog">
-                <img src="../../../pub/images/placeholder.png">
+                <img src="../../../pub/images/placeholder.png" style="max-width: 100%; height: auto;">
                 <p>View all dogs here</p>
             </a>
             <a href="/../animal/table/cat">
-                <img src="../../../pub/images/placeholder.png">
+                <img src="../../../pub/images/placeholder.png" style="max-width: 100%; height: auto;">
                 <p>View all cats here</p>
             </a>
         </div>
@@ -96,13 +96,13 @@
         <div class="col-sm-2 sidenav">
             <div class="well">
                 <a href="/login/register">
-                    <img src="../../../pub/images/placeholder.png">
+                    <img src="../../../pub/images/placeholder.png" style="max-width: 100%; height: auto;">
                     <p>New member? Register an account here!</p>
                 </a>
             </div>
             <div class="well">
                 <a href="/cart/shop">
-                    <img src="../../../pub/images/placeholder.png">
+                    <img src="../../../pub/images/placeholder.png" style="max-width: 100%; height: auto;">
                     <p>Need some supplies? Shop here!</p>
                 </a>
             </div>

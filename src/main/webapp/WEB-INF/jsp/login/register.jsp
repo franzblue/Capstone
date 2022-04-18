@@ -106,14 +106,16 @@
 
         <c:when test = "${empty form.id}">
             <h1>Sign Up</h1>
+        <form class="form-horizontal" action="/login/registerSubmit" method="post">
         </c:when>
 
         <c:when test = "${not empty form.id}">
             <h1>Edit User</h1>
+            <form class="form-horizontal" action="/user/editSubmit/${form.id}" method="post">
         </c:when>
 
     </c:choose>
-    <form class="form-horizontal" action="/login/registerSubmit" method="post">
+
         <div class="form-group">
             <input type="hidden" name="id" value="${form.id}">
             <label for="firstNameId" class="col-sm-2 control-label">First Name: </label>
@@ -149,7 +151,7 @@
 
         <c:if test="${empty form.email}">
             <div class="form-group">
-                <label for="emailId" class="col-sm-2 control-label disabled">Email: </label>
+                <label for="emailId" class="col-sm-2 control-label">Email: </label>
                 <div class="col-sm-10">
                     <input type="email" class="form-control" name="email" id="emailId" placeholder="Email" value="${form.email}">
                 </div>
@@ -176,44 +178,47 @@
                     ${error.getDefaultMessage()}
             </div>
         </c:forEach>
-        <div class="form-group">
-            <label for="passwordId" class="col-sm-2 control-label">Password: </label>
-            <div class="col-sm-10">
-                <input type="password" class="form-control" name="password" id="passwordId" placeholder="Password" value="${form.password}">
-            </div>
-        </div>
+
+            <c:if test="${not empty form.password}">
+                <div class="form-group">
+                    <label for="passwordId" class="col-sm-2 control-label disabled">Password: </label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" name="password" id="passwordId" placeholder="Password" value="${form.password}" disabled>
+                    </div>
+                </div>
+            </c:if>
+
+            <c:if test="${empty form.password}">
+                <div class="form-group">
+                    <label for="passwordId" class="col-sm-2 control-label">Password: </label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" name="email" id="passwordId" placeholder="Password" value="${form.password}">
+                    </div>
+                </div>
+            </c:if>
+
         <c:forEach items="${bindingResult.getFieldErrors('password')}" var="error">
             <div style="color: red;">
                     ${error.getDefaultMessage()}
             </div>
         </c:forEach>
-        <div class="form-group">
-            <label for="confirmPasswordId" class="col-sm-2 control-label">ConfirmPassword: </label>
-            <div class="col-sm-10">
-                <input type="password" class="form-control" name="confirmPassword" id="confirmPasswordId" placeholder="Confirm Password" value="${form.password}">
-            </div>
-        </div>
-        <c:forEach items="${bindingResult.getFieldErrors('confirmPassword')}" var="error">
-            <div style="color: red;">
-                    ${error.getDefaultMessage()}
-            </div>
-        </c:forEach>
+
         <div class="slidecontainer">
             <label for="dogRange" class="col-sm-2 control-label">Dog Person: </label>
             <br>
-            <input type="range" min="1" max="100" value="50" class="slider" id="dogRange" value="${form.dogLove}">
+            <input type="range" min="1" max="100" class="slider" name="dogLove" id="dogRange" value="${form.dogLove}">
             <div id="dogRangeValue"></div>
         </div>
         <div class="slidecontainer">
             <label for="catRange" class="col-sm-2 control-label">Cat Person: </label>
             <br>
-            <input type="range" min="1" max="100" value="50" class="slider" id="catRange" value="${form.catLove}">
+            <input type="range" min="1" max="100" class="slider" name="catLove" id="catRange" value="${form.catLove}">
             <div id="catRangeValue"></div>
         </div>
         <div class="slidecontainer">
             <label for="otherRange" class="col-sm-2 control-label">Small Animals: </label>
             <br>
-            <input type="range" min="1" max="100" value="50" class="slider" id="otherRange" value="${form.smallLove}">
+            <input type="range" min="1" max="100" class="slider" name="smallLove" id="otherRange" value="${form.smallLove}">
             <div id="otherRangeValue"></div>
         </div>
         <br>

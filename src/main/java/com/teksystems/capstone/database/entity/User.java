@@ -2,6 +2,7 @@ package com.teksystems.capstone.database.entity;
 
 import lombok.*;
 import javax.persistence.*;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -53,5 +54,12 @@ public class User {
 
     @Column(name = "description")
     private String description;
+
+    @Column(name = "blurb")
+    private String blurb;
+//
+//    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+//    private Set<Order> orders;
+
 
 }

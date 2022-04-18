@@ -12,7 +12,7 @@
                 <img src="${form.image}" alt="...">
                 <div class="card-body p-1-9 p-xl-5">
                     <div class="mb-4">
-                        <h3 class="h4 mb-0">Franz Blue</h3>
+                        <h3 class="h4 mb-0">${form.firstName} ${form.lastName}</h3>
                         <span class="text-primary">CEO &amp; Founder</span>
                     </div>
                     <ul class="list-unstyled mb-4">
@@ -26,6 +26,18 @@
                         <li><a href="#!" class="rounded-3"><i class="fab fa-youtube"></i></a></li>
                         <li><a href="#!" class="rounded-3"><i class="fab fa-linkedin-in"></i></a></li>
                     </ul> -->
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col text-center">
+                                <form action="/user/edit/${form.id}" method="get">
+                                    <button class="btn btn-primary" type="submit">Edit Profile</button>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -35,10 +47,13 @@
                     <div class="text-start mb-1-6 wow fadeIn">
                         <h2 class="h1 mb-0 text-primary">About Me</h2>
                     </div>
-                    <p>Hello, I am looking to fill a whole in my life with an adorable pet doggy!</p>
+                    <br>
+                    <p>${form.blurb}</p>
                     <p class="mb-0">${form.description}</p>
                 </div>
                 <div class="wow fadeIn">
+                    <h3>My preferences: </h3>
+                    <hr>
                     <div class="progress-style1">
                         <div class="progress-text">
                             <div class="row">

@@ -67,6 +67,8 @@ public class LoginController {
             user = new User();
         }
 
+        // need a bunch if if else statements checking for null values
+
         user.setEmail(form.getEmail());
         user.setFirstName(form.getFirstName());
         user.setLastName(form.getLastName());
@@ -79,6 +81,7 @@ public class LoginController {
         user.setTelephone(form.getTelephone());
         user.setAddress(form.getAddress());
         user.setDescription(form.getDescription());
+        user.setBlurb(form.getBlurb());
 
         userDao.save(user);
 

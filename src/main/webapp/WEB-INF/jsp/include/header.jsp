@@ -92,7 +92,7 @@
                         <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item" href="/../animal/table/dog">Dogs</a></li>
                         <li><a class="dropdown-item" href="/../animal/table/cat">Cats</a></li>
-                        <li><a class="dropdown-item" href="/../animal/table/other">Other Animals</a></li>
+                        <li><a class="dropdown-item" href="/../animal/table/small">Small Animals</a></li>
                     </ul>
                 </li>
             </ul>
