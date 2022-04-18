@@ -196,24 +196,29 @@ public class UserController {
 //        } else {
 //            user.setImage(form.getImage());
 //        }
-//
-//        if(form.getTelephone().equals(loggedInUser.getTelephone())) {
-//            user.setTelephone(loggedInUser.getTelephone());
-//        } else {
-//            user.setTelephone(form.getTelephone());
-//        }
-//
+
+        if(form.getTelephone().equals(loggedInUser.getTelephone())) {
+            user.setTelephone(loggedInUser.getTelephone());
+        } else {
+            user.setTelephone(form.getTelephone());
+        }
+
 //        if(form.getAddress().equals(loggedInUser.getAddress())) {
 //            user.setAddress(loggedInUser.getAddress());
 //        } else {
 //            user.setAddress(form.getAddress());
 //        }
-//
-//        if(form.getBlurb().equals(loggedInUser.getBlurb())) {
-//            user.setBlurb(loggedInUser.getBlurb());
-//        } else {
-//            user.setBlurb(form.getBlurb());
-//        }
+
+        if(form.getBlurb().equals("")) {
+            user.setBlurb(loggedInUser.getBlurb());
+        } else {
+            user.setBlurb(form.getBlurb());
+        }
+        if(form.getDescription().equals("")) {
+            user.setDescription(loggedInUser.getDescription());
+        } else {
+            user.setDescription(form.getDescription());
+        }
 
 
 

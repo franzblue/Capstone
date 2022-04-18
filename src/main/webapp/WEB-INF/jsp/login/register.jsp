@@ -159,9 +159,6 @@
         </c:if>
 
 
-
-
-
         <c:forEach items="${bindingResult.getFieldErrors('email')}" var="error">
             <div style="color: red;">
                     ${error.getDefaultMessage()}
@@ -192,7 +189,16 @@
                 <div class="form-group">
                     <label for="passwordId" class="col-sm-2 control-label">Password: </label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" name="email" id="passwordId" placeholder="Password" value="${form.password}">
+                        <input type="password" class="form-control" name="password" id="passwordId" placeholder="Password" value="${form.password}">
+                    </div>
+                </div>
+            </c:if>
+
+            <c:if test="${empty form.password}">
+                <div class="form-group">
+                    <label for="confirmPasswordId" class="col-sm-2 control-label">Password: </label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" name="confirmPassword" id="confirmPasswordId" placeholder="Confirm Password">
                     </div>
                 </div>
             </c:if>
@@ -202,6 +208,35 @@
                     ${error.getDefaultMessage()}
             </div>
         </c:forEach>
+
+        <div class="form-group">
+            <label for="telephoneId">Telephone:</label>
+                <small>ex. 123-456-7890</small>
+            <div class="col-sm-10">
+                <input type="tel" id="telephoneId" name="telephone" placeholder="Telephone" value="${form.telephone}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="addressId">Address:</label>
+                <small>ex. Street Address</small>
+            <div class="col-sm-10">
+                <input type="tel" id="addressId" name="text" placeholder="Address" value="${form.address}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="blurbId">Describe yourself in one sentence: </label>
+            <div class="col-sm-10">
+                <textarea class="form-control" id="blurbId" name="blurb" rows="1" value="${form.blurb}" placeholder="Short blurb"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="blurbId">Describe yourself in more detail: </label>
+            <div class="col-sm-10">
+                <textarea class="form-control" id="descriptionId" name="description" rows="3" value="${form.description}" placeholder="Longer description"></textarea>
+            </div>
+        </div>
 
         <div class="slidecontainer">
             <label for="dogRange" class="col-sm-2 control-label">Dog Person: </label>
@@ -221,6 +256,10 @@
             <input type="range" min="1" max="100" class="slider" name="smallLove" id="otherRange" value="${form.smallLove}">
             <div id="otherRangeValue"></div>
         </div>
+<%--        <div class="custom-file">--%>
+<%--            <label class="custom-file-label" for="imageId">Upload Profile Picture: </label>--%>
+<%--            <input type="file" class="custom-file-input" id="imageId" name="image" value="form.image">--%>
+<%--        </div>--%>
         <br>
         <button type="submit">Submit</button>
     </form>
