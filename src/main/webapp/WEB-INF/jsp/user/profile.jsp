@@ -2,6 +2,22 @@
 
 <jsp:include page="../include/header.jsp"/>
 
+<script>
+    function editPic() {
+        $.ajax({
+            type: "GET",
+            url: "/user/editPicture",
+            success: function (response) {
+                window.location.href = "/user/editPicture";
+            },
+            error: function (result) {
+                // do something.
+                console.log("problem with pic");
+            }
+        });
+    }
+</script>
+
 
 <%--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />--%>
 <%--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ti-icons@0.1.2/css/themify-icons.css">--%>
@@ -9,7 +25,8 @@
     <div class="row justify-content-center">
         <div class="col-md-7 col-lg-4 mb-5 mb-lg-0 wow fadeIn">
             <div class="card border-0 shadow">
-                <img src="${form.image}" alt="...">
+                <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Change Picture</div>
+                <img onclick="editPic()" src="${form.image}" alt="profile picture">
                 <div class="card-body p-1-9 p-xl-5">
                     <div class="mb-4">
                         <h3 class="h4 mb-0">${form.firstName} ${form.lastName}</h3>
@@ -33,7 +50,6 @@
                                 <form action="/user/edit/${form.id}" method="get">
                                     <button class="btn btn-primary" type="submit">Edit Profile</button>
                                 </form>
-
                             </div>
                         </div>
                     </div>

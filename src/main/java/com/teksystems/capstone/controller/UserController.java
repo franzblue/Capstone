@@ -5,7 +5,9 @@ import com.teksystems.capstone.database.entity.User;
 import com.teksystems.capstone.formBean.EditFormBean;
 import com.teksystems.capstone.formBean.RegisterFormBean;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,9 +16,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+
+import java.io.File;
 import java.util.List;
 
 
@@ -233,4 +238,38 @@ public class UserController {
 
         return response;
     }
+
+
+    @GetMapping("/user/editPicture")
+    public ModelAndView editPicture() {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("/user/editPicture");
+
+        return response;
+    }
+
+    @RequestMapping(value = "/upload", method = RequestMethod.POST)
+    public ModelAndView uploadPicture(@RequestParam("file") MultipartFile file) throws Exception {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("redirect:/user/profile");
+        log.info("original file name: " + file.getOriginalFilename() + "file size: " + file.getSize());
+
+//        File targetFile = new File("\Downloads\" + file.getOriginalFilename());
+
+        File targetFile = new File("/Users/franzblue/Desktop/Capstone/src/main/webapp/pub/images/" + file.getOriginalFilename());
+
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipleName = authentication.getName();
+        User loggedInUser = userDao.findUserByUsername(currentPrincipleName);
+
+        loggedInUser.setImage("../../../pub/images/" + file.getOriginalFilename());
+
+        userDao.save(loggedInUser);
+
+        FileUtils.copyInputStreamToFile(file.getInputStream(), targetFile);
+        return response;
+    }
+
+
 }

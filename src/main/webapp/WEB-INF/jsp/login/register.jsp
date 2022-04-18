@@ -225,18 +225,42 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="blurbId">Describe yourself in one sentence: </label>
-            <div class="col-sm-10">
-                <textarea class="form-control" id="blurbId" name="blurb" rows="1" value="${form.blurb}" placeholder="Short blurb"></textarea>
+        <c:if test="${empty form.blurb}">
+            <div class="form-group">
+                <label for="blurbId">Describe yourself in one sentence: </label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" id="blurbId" name="blurb" rows="1" value="${form.blurb}" placeholder="Short blurb"></textarea>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="blurbId">Describe yourself in more detail: </label>
-            <div class="col-sm-10">
-                <textarea class="form-control" id="descriptionId" name="description" rows="3" value="${form.description}" placeholder="Longer description"></textarea>
+        </c:if>
+
+        <c:if test="${not empty form.blurb}">
+            <div class="form-group">
+                <label for="blurbId">Describe yourself in one sentence: </label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" id="blurbId" name="blurb" rows="1" value="${form.blurb}" placeholder="${form.blurb}"></textarea>
+                </div>
             </div>
-        </div>
+        </c:if>
+
+
+        <c:if test="${empty form.description}">
+            <div class="form-group">
+                <label for="blurbId">Describe yourself in more detail: </label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" id="descriptionId" name="description" rows="3" value="${form.description}" placeholder="Longer description"></textarea>
+                </div>
+            </div>
+        </c:if>
+
+        <c:if test="${not empty form.description}">
+            <div class="form-group">
+                <label for="blurbId">Describe yourself in more detail: </label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" id="descriptionId" name="description" rows="3" value="${form.description}" placeholder="${form.description}"></textarea>
+                </div>
+            </div>
+        </c:if>
 
         <div class="slidecontainer">
             <label for="dogRange" class="col-sm-2 control-label">Dog Person: </label>
