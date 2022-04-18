@@ -30,10 +30,6 @@ public class Product {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "quantity")
-    @Min(value = 0, message = "Quantity has to be non negative number")
-    private Integer quantity;
-
     @Column(name = "price")
     @DecimalMin(value = "0.00", message = "Price has to be non negative number")
     private Integer price;

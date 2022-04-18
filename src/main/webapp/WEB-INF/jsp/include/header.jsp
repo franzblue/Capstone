@@ -18,7 +18,7 @@
 
 
 
-<body>
+<body onload="showCart()">
 <%--<ul class="nav justify-content-end">--%>
 
 <%--    <li class="nav-item">--%>
@@ -66,6 +66,23 @@
 <%--    <a href="/user/register">Sign Up</a> |--%>
 <%--    <a href="/user/search">Search</a>--%>
 
+<script>
+    function showCart(selectObject) {
+        $.ajax({
+            type: "GET",
+            url: "/cart/showCart",
+            success: function (response) {
+                console.log("test")
+                $("cartId").html(69);
+            },
+            error: function (result) {
+                // do something.
+                console.log("product ?");
+            }
+        });
+    }
+</script>
+
 
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -100,7 +117,7 @@
                 <button class="btn btn-outline-dark" type="submit">
                     <i class="bi-cart-fill me-1"></i>
                     Cart
-                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                    <span id="cartId" class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                 </button>
             </form>
         </div>

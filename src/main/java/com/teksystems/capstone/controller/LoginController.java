@@ -1,7 +1,9 @@
 package com.teksystems.capstone.controller;
 
 import com.teksystems.capstone.database.dao.UserDAO;
+import com.teksystems.capstone.database.dao.UserRoleDAO;
 import com.teksystems.capstone.database.entity.User;
+import com.teksystems.capstone.database.entity.UserRole;
 import com.teksystems.capstone.formBean.RegisterFormBean;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,9 @@ public class LoginController {
 
     @Autowired
     private UserDAO userDao;
+
+    @Autowired
+    private UserRoleDAO userRoleDao;
 
 
     @RequestMapping(value = "/login/login", method = RequestMethod.GET)
@@ -84,6 +89,12 @@ public class LoginController {
         user.setBlurb(form.getBlurb());
 
         userDao.save(user);
+
+        Integer newUserId = userDao.findUserByEmail(user.getEmail()).getId();
+        UserRole newUserRole = new UserRole();
+        newUserRole.setUserRole("USER");
+        newUserRole.setUserId(newUserId);
+        userRoleDao.save(newUserRole);
 
         response.setViewName("redirect:/login/login");
 

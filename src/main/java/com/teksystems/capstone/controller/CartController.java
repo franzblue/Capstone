@@ -1,9 +1,6 @@
 package com.teksystems.capstone.controller;
 
-import com.teksystems.capstone.database.dao.OrderDAO;
-import com.teksystems.capstone.database.dao.OrderProductDAO;
-import com.teksystems.capstone.database.dao.ProductDAO;
-import com.teksystems.capstone.database.dao.UserDAO;
+import com.teksystems.capstone.database.dao.*;
 import com.teksystems.capstone.database.entity.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -37,12 +34,37 @@ public class CartController {
     @Autowired
     private UserDAO userDao;
 
+    @Autowired
+    private ShoppingCartDAO shoppingCartDao;
+
+    @Autowired
+    private CartItemDAO cartItemDao;
+
     @RequestMapping(value = "/cart/shop", method = RequestMethod.GET)
     public ModelAndView viewAllProducts() throws Exception {
         ModelAndView response = new ModelAndView();
         response.setViewName("cart/shop");
 
         List<Product> products = productDao.findAll();
+        response.addObject("products", products);
+
+        log.info("products: " + products);
+
+        return response;
+
+    }
+
+    @RequestMapping(value = "/cart/showCard", method = RequestMethod.GET)
+    public ModelAndView showCart() throws Exception {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("cart/shop");
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipleName = authentication.getName();
+        User loggedInUser = userDao.findUserByUsername(currentPrincipleName);
+
+        Order products = orderDao.findById(loggedInUser.getId());
+
         response.addObject("products", products);
 
         log.info("products: " + products);
@@ -63,20 +85,42 @@ public class CartController {
 
         Product product = productDao.findProductById(productId);
 
-        Order order = orderDao.findById(loggedInUser.getId());
+//        Order order = orderDao.findById(loggedInUser.getId());
+
+        ShoppingCart shoppingCart = shoppingCartDao.findByUser(loggedInUser);
+
+        if (shoppingCart == null) {
+            shoppingCart = new ShoppingCart();
+        }
+
+        shoppingCart.setUser(loggedInUser);
+
+        shoppingCartDao.save(shoppingCart);
+
+
+        CartItem cartItem = new CartItem();
+        cartItem.setProduct(product);
+        cartItem.setShoppingCart(shoppingCart);
+        cartItem.setQuantity(1);
+
+        cartItemDao.save(cartItem);
+
+
+        log.info("cart item: ", cartItem.getProduct());
+        log.info("shopping cart: ", shoppingCart.getUser());
 
 //        OrderProduct oP = orderProductDao.findByProduct(product);
-
-
-        log.info(orderProductDao.toString());
-
-        OrderProduct orderProduct = new OrderProduct();
-        orderProduct.setProduct(product);
-        orderProduct.setOrder(order);
-
-        orderProductDao.save(orderProduct);
-
-        log.info(orderProductDao.toString());
+//
+//
+//        log.info(orderProductDao.toString());
+//
+//        OrderProduct orderProduct = new OrderProduct();
+//        orderProduct.setProduct(product);
+//        orderProduct.setOrder(order);
+//
+//        orderProductDao.save(orderProduct);
+//
+//        log.info(orderProductDao.toString());
 
         return response;
     }
