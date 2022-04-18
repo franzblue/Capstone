@@ -1,5 +1,6 @@
 package com.teksystems.capstone.database.dao;
 
+import com.teksystems.capstone.database.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -14,6 +15,8 @@ import java.util.Map;
 public interface OrderProductDAO extends JpaRepository<OrderProduct, Long> {
 
     public OrderProduct findById(@Param("id") Integer id);
+
+    public OrderProduct findByProduct(@Param("product") Product product);
 
     // this is not necessarily in scope for the case study
     @Query(value=" select product_id, count(*) as cnt, p.name from order_products op, products p where op.product_id = p.id group by product_id",

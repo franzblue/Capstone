@@ -71,9 +71,9 @@
 <form action="/animal/search" method="get">
     <select id="species" name="species" onchange="getSpecies(this)">
         <option>Species</option>
-        <option value="Dog" name="species">Dogs</option>
-        <option value="Cat" name="species">Cats</option>
-        <option value="Other" name="species">Rabbits And Small Animals</option>
+        <option value="dog" name="species">Dogs</option>
+        <option value="cat" name="species">Cats</option>
+        <option value="small" name="species">Rabbits And Small Animals</option>
         <div id="exampleDiv"></div>
     </select>
     <select action="/animal/species" id="sex" onchange="getSex(this)">

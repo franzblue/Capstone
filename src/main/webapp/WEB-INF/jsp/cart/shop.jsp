@@ -2,6 +2,23 @@
 
 <jsp:include page="../include/header.jsp"/>
 
+<script>
+    function addToCart(selectObject) {
+        $.ajax({
+            type: "POST",
+            url: "/cart/addToCart",
+            data: {"productId" : selectObject},
+            success: function (response) {
+                alert("Item added to cart!");
+            },
+            error: function (result) {
+                // do something.
+                console.log("product ?");
+            }
+        });
+    }
+</script>
+
 <!-- Header-->
 <header class="bg-dark py-5">
     <div class="container px-4 px-lg-5 my-5">
@@ -41,7 +58,7 @@
                        </div>
                        <!-- Product actions-->
                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                           <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                           <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="addToCart(${item.id})">Add to cart</a></div>
                        </div>
                    </div>
                </div>

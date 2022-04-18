@@ -4,11 +4,9 @@ import com.teksystems.capstone.database.dao.OrderDAO;
 import com.teksystems.capstone.database.dao.OrderProductDAO;
 import com.teksystems.capstone.database.dao.ProductDAO;
 import com.teksystems.capstone.database.dao.UserDAO;
-import com.teksystems.capstone.database.entity.Order;
-import com.teksystems.capstone.database.entity.OrderProduct;
-import com.teksystems.capstone.database.entity.Product;
-import com.teksystems.capstone.database.entity.User;
+import com.teksystems.capstone.database.entity.*;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -51,7 +49,36 @@ public class CartController {
 
         return response;
 
+    }
 
+    @RequestMapping(value = "/cart/addToCart", method = RequestMethod.POST)
+    public ModelAndView addToCart(@RequestParam(name = "productId") Integer productId) {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("cart/shop");
+        log.info("productId: ", productId);
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipleName = authentication.getName();
+        User loggedInUser = userDao.findUserByUsername(currentPrincipleName);
+
+        Product product = productDao.findProductById(productId);
+
+        Order order = orderDao.findById(loggedInUser.getId());
+
+//        OrderProduct oP = orderProductDao.findByProduct(product);
+
+
+        log.info(orderProductDao.toString());
+
+        OrderProduct orderProduct = new OrderProduct();
+        orderProduct.setProduct(product);
+        orderProduct.setOrder(order);
+
+        orderProductDao.save(orderProduct);
+
+        log.info(orderProductDao.toString());
+
+        return response;
     }
 
 
