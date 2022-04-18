@@ -2,34 +2,65 @@
 
 <jsp:include page="../include/header.jsp"/>
 
-<h1>${cartItems[0].shoppingCart.user.username}'s Shopping Cart</h1>
-
 <script>
     var totalz = 0;
     var pricez = 0;
     var quantz = 0;
 </script>
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <h1>${cartItems[0].shoppingCart.user.username}'s Shopping Cart</h1>
+
+        <h2 >TOTAL AMOUNT DUE: <script type="text/javascript">
+            document.write("$"+totalz+".00")
+        </script></h2>
+        <hr>
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-3 justify-content-center">
 
 <c:forEach items="${cartItems}" var="item">
 
 <%--    <b>Complete Product: ${item.product}</b>--%>
 
 <%--    <p>Username: ${item.shoppingCart.user.username}</p>--%>
-    <p>Name: ${item.product.name}</p>
-    <p>Name: ${item.product.description}</p>
+<%--    <p>Name: ${item.product.name}</p>--%>
+<%--    <p>Name: ${item.product.description}</p>--%>
 
-    <c:choose>
-        <c:when test="${item.product.sale == 0}">
-            <p>Price: $${item.product.price}.00</p>
-        </c:when>
-        <c:otherwise>
-            <b>On sale!</b>
-            <p>Price: $${item.product.sale}.00</p>
-        </c:otherwise>
-    </c:choose>
+<%--    <c:choose>--%>
+<%--        <c:when test="${item.product.sale == 0}">--%>
+<%--            <p>Price: $${item.product.price}.00</p>--%>
+<%--        </c:when>--%>
+<%--        <c:otherwise>--%>
+<%--            <b>On sale!</b>--%>
+<%--            <p>Price: $${item.product.sale}.00</p>--%>
+<%--        </c:otherwise>--%>
+<%--    </c:choose>--%>
 
-    <p>Quantity: ${item.quantity}</p>
-    <p>Total: $${item.quantity * item.product.price}.00</p>
+<%--    <p>Quantity: ${item.quantity}</p>--%>
+<%--    <p>Total: $${item.quantity * item.product.price}.00</p>--%>
+
+    <div class="col mb-5">
+        <div class="card h-100">
+        <img class="card-img-top" src="${item.product.image}" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">${item.product.name}</h5>
+            <p class="card-text">${item.product.description}</p>
+            <c:choose>
+                <c:when test="${item.product.sale == 0}">
+                    <p class="card-text">Price: $${item.product.price}.00</p>
+                </c:when>
+                <c:otherwise>
+                    <b>On sale!</b>
+                    <p class="card-text">Price: $${item.product.sale}.00</p>
+                </c:otherwise>
+            </c:choose>
+            <p class="card-text">Quantity: ${item.quantity}</p>
+        </div>
+        <a href="/../animal/card/${item.id}" class="btn btn-secondary">Remove ${item.product.name}</a>
+        <div class="card-footer">
+            <small class="text-muted">Item Total: $${item.quantity * item.product.price}.00</small>
+        </div>
+    </div>
+    </div>
 
     <script>
 
@@ -47,16 +78,13 @@
 
 
 <%--    <b>Complete User: ${item.shoppingCart.user}</b>--%>
-    <hr>
+<%--    <hr>--%>
 
 </c:forEach>
+        </div>
+    </div>
+</section>
 
-<script>
-    // var totalz = 1;
-</script>
 
-    <h2 >"TOTAL AMOUNT DUE: " <script type="text/javascript">
-        document.write("$"+totalz+".00")
-    </script></h2>
 
 <jsp:include page="../include/footer.jsp"/>
