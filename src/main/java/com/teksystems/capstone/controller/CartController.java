@@ -2,6 +2,8 @@ package com.teksystems.capstone.controller;
 
 import com.teksystems.capstone.database.dao.*;
 import com.teksystems.capstone.database.entity.*;
+import com.teksystems.capstone.formBean.RegisterFormBean;
+import com.teksystems.capstone.formBean.ShoppingCartBean;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import javax.websocket.server.PathParam;
 import java.util.List;
 import java.util.Map;
@@ -54,24 +57,51 @@ public class CartController {
 
     }
 
-    @RequestMapping(value = "/cart/showCard", method = RequestMethod.GET)
-    public ModelAndView showCart() throws Exception {
+    @RequestMapping(value = "/cart/cart", method = RequestMethod.GET)
+    public ModelAndView goToCart(@Valid ShoppingCartBean form) throws Exception {
         ModelAndView response = new ModelAndView();
-        response.setViewName("cart/shop");
+        response.setViewName("cart/cart");
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentPrincipleName = authentication.getName();
         User loggedInUser = userDao.findUserByUsername(currentPrincipleName);
 
-        Order products = orderDao.findById(loggedInUser.getId());
+        ShoppingCart shoppingCart = shoppingCartDao.findByUser(loggedInUser);
 
-        response.addObject("products", products);
+        if (shoppingCart == null) {
+            shoppingCart = new ShoppingCart();
+            return response;
+        }
 
-        log.info("products: " + products);
+        List<CartItem> cartItems = cartItemDao.findAllByShoppingCart(shoppingCart);
+
+        response.addObject("cartItems", cartItems);
+
+
 
         return response;
-
     }
+
+//
+//
+//    @RequestMapping(value = "/cart/showCart", method = RequestMethod.GET)
+//    public ModelAndView showCart() throws Exception {
+//        ModelAndView response = new ModelAndView();
+//        response.setViewName("cart/shop");
+//
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        String currentPrincipleName = authentication.getName();
+//        User loggedInUser = userDao.findUserByUsername(currentPrincipleName);
+//
+//        Order products = orderDao.findById(loggedInUser.getId());
+//
+//        response.addObject("products", products);
+//
+//        log.info("products: " + products);
+//
+//        return response;
+//
+//    }
 
     @RequestMapping(value = "/cart/addToCart", method = RequestMethod.POST)
     public ModelAndView addToCart(@RequestParam(name = "productId") Integer productId) {
