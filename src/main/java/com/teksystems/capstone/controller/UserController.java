@@ -245,6 +245,14 @@ public class UserController {
         ModelAndView response = new ModelAndView();
         response.setViewName("/user/editPicture");
 
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipleName = authentication.getName();
+        User loggedInUser = userDao.findUserByUsername(currentPrincipleName);
+
+        String image = loggedInUser.getImage();
+
+        response.addObject("image", image);
+
         return response;
     }
 
