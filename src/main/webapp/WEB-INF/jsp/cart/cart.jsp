@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<jsp:include page="../include/header.jsp"/>
+<jsp:include page="../include/cartHeader.jsp"/>
 
 <script>
     var totalz = 0;
@@ -10,10 +10,8 @@
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
         <h1>${cartItems[0].shoppingCart.user.username}'s Shopping Cart</h1>
-
-        <h2 >TOTAL AMOUNT DUE: <script type="text/javascript">
-            document.write("$"+totalz+".00")
-        </script></h2>
+        <h2 id="totalDue">TOTAL AMOUNT DUE: </h2>
+        <p class="text-muted" style="display: flex; justify-content: center;">Please review items below.</p>
         <hr>
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-3 justify-content-center">
 
@@ -55,7 +53,7 @@
             </c:choose>
             <p class="card-text">Quantity: ${item.quantity}</p>
         </div>
-        <a href="/../animal/card/${item.id}" class="btn btn-secondary">Remove ${item.product.name}</a>
+        <a href="#" class="btn btn-secondary">Remove ${item.product.name}</a>
         <div class="card-footer">
             <small class="text-muted">Item Total: $${item.quantity * item.product.price}.00</small>
         </div>
@@ -77,6 +75,7 @@
     </script>
 
 
+
 <%--    <b>Complete User: ${item.shoppingCart.user}</b>--%>
 <%--    <hr>--%>
 
@@ -86,5 +85,8 @@
 </section>
 
 
+<script type="text/javascript">
+    document.querySelector("#totalDue").innerHTML+= "$"+totalz+".00";
+</script>
 
 <jsp:include page="../include/footer.jsp"/>
