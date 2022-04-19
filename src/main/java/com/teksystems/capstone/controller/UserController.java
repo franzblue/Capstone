@@ -1,7 +1,10 @@
 package com.teksystems.capstone.controller;
 
 import com.teksystems.capstone.database.dao.UserDAO;
+import com.teksystems.capstone.database.dao.UserRoleDAO;
+import com.teksystems.capstone.database.entity.Animal;
 import com.teksystems.capstone.database.entity.User;
+import com.teksystems.capstone.database.entity.UserRole;
 import com.teksystems.capstone.formBean.EditFormBean;
 import com.teksystems.capstone.formBean.RegisterFormBean;
 import lombok.extern.slf4j.Slf4j;
@@ -31,6 +34,9 @@ public class UserController {
 
     @Autowired
     private UserDAO userDao;
+
+    @Autowired
+    private UserRoleDAO userRoleDao;
 
 
     @GetMapping("/user/search")
@@ -279,5 +285,116 @@ public class UserController {
         return response;
     }
 
+    @GetMapping("/user/sortId")
+    public ModelAndView sortById() {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("user/search");
+
+        List<User> users = userDao.sortById();
+
+        response.addObject("users", users);
+
+        response.addObject("searchValue", "ID");
+
+        return response;
+    }
+
+    @GetMapping("/user/sortRole")
+    public ModelAndView sortByRole() {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("user/search");
+
+        List<User> users = userDao.sortByRole();
+
+        response.addObject("users", users);
+
+        response.addObject("searchValue", "Role");
+
+        return response;
+    }
+
+    @GetMapping("/user/sortEmail")
+    public ModelAndView sortByEmail() {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("user/search");
+
+        List<User> users = userDao.sortByEmail();
+
+        response.addObject("users", users);
+
+        response.addObject("searchValue", "Email");
+
+        return response;
+    }
+
+    @GetMapping("/user/sortFirst")
+    public ModelAndView sortByFirst() {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("user/search");
+
+        List<User> users = userDao.sortByFirst();
+
+        response.addObject("users", users);
+
+        response.addObject("searchValue", "Firstname");
+
+        return response;
+    }
+
+    @GetMapping("/user/sortLast")
+    public ModelAndView sortByLast() {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("user/search");
+
+        List<User> users = userDao.sortByLast();
+
+        response.addObject("users", users);
+
+        response.addObject("searchValue", "Lastname");
+
+        return response;
+    }
+
+    @GetMapping("/user/sortUsername")
+    public ModelAndView sortByUsername() {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("user/search");
+
+        List<User> users = userDao.sortByUsername();
+
+        response.addObject("users", users);
+
+        response.addObject("searchValue", "Username");
+
+        return response;
+    }
+
+    @GetMapping("/user/sortTelephone")
+    public ModelAndView sortByTelephone() {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("user/search");
+
+        List<User> users = userDao.sortByTelephone();
+
+        response.addObject("users", users);
+
+        response.addObject("searchValue", "Telephone");
+
+        return response;
+    }
+
+    @GetMapping("/user/sortAddress")
+    public ModelAndView sortByAddress() {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("user/search");
+
+        List<User> users = userDao.sortByAddress();
+
+        response.addObject("users", users);
+
+        response.addObject("searchValue", "Address");
+
+        return response;
+    }
 
 }

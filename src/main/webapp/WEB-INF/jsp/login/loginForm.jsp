@@ -100,9 +100,8 @@
     }
 </style>
 
-
 <div class="wrapper">
-    <div class="logo"> <img src="../../../pub/images/placeholder.png" alt="Cute animal"> </div>
+    <div class="logo"> <img src="../../../pub/images/welcome.jpg" alt="Cute animal"> </div>
     <div class="text-center mt-4 name"> Sign In </div>
     <form class="p-3 mt-3" action="/login/loginSubmit" method="POST">
         <div class="form-field d-flex align-items-center"> <span class="far fa-user"></span> <input type="email" class="form-control" id="emailId" aria-describedby="emailHelp" name="username" placeholder="Enter email"> </div>
@@ -112,8 +111,5 @@
     <br>
     <div class="text-center fs-6"> <a href="/login/register">Need an account?</a></div>
 </div>
-
-
-
 
 <%--<jsp:include page="../include/footer.jsp"/>--%>

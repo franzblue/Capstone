@@ -58,6 +58,9 @@ public class User {
 
     @Column(name = "blurb")
     private String blurb;
+
+    @Column(name = "role")
+    private String role;
 //
 //    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
 //    private Set<Order> orders;

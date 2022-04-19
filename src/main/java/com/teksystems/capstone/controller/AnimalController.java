@@ -108,7 +108,7 @@ public class AnimalController {
     }
 
     @GetMapping("/animal/species")
-    public ModelAndView animalSearch1(@RequestParam(name = "species", required = false, defaultValue = "") String searchValue) {
+    public ModelAndView animalSpecies(@RequestParam(name = "species", required = false, defaultValue = "") String searchValue) {
         ModelAndView response = new ModelAndView();
         response.setViewName("animal/table");
 
