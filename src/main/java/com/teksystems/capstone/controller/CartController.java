@@ -102,7 +102,7 @@ public class CartController {
 //    }
 
     @RequestMapping(value = "/cart/addToCart", method = RequestMethod.POST)
-    public ModelAndView addToCart(@RequestParam(name = "productId") Integer productId) {
+    public ModelAndView addToCart(@RequestParam(name = "productId") Integer productId, @RequestParam("quantityValue") Integer quantityValue) {
         ModelAndView response = new ModelAndView();
         response.setViewName("cart/shop");
         log.info("productId: ", productId);
@@ -129,7 +129,7 @@ public class CartController {
         CartItem cartItem = new CartItem();
         cartItem.setProduct(product);
         cartItem.setShoppingCart(shoppingCart);
-        cartItem.setQuantity(1);
+        cartItem.setQuantity(quantityValue);
 
         cartItemDao.save(cartItem);
 
@@ -155,7 +155,7 @@ public class CartController {
 
 
     @RequestMapping(value = "/cart/cart/{productId}", method = RequestMethod.GET)
-    public ModelAndView addProducToCart(@PathVariable("productId") Integer productId) throws Exception {
+    public ModelAndView addProductToCart(@PathVariable("productId") Integer productId) throws Exception {
         ModelAndView response = new ModelAndView();
         response.setViewName("cart/cart");
 

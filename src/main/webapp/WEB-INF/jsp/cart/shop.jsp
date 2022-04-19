@@ -3,13 +3,23 @@
 <jsp:include page="../include/header.jsp"/>
 
 <script>
-    function addToCart(selectObject) {
+    var qauntityValue;
+    function changeValue(quantity) {
+        quantityValue = document.getElementById(quantity).value;
+        console.log(quantityValue, quantity);
+    }
+
+    function addToCart(productId, quantityValue) {
         $.ajax({
             type: "POST",
             url: "/cart/addToCart",
-            data: {"productId" : selectObject},
+            data: {"productId" : productId, "quantityValue" : quantityValue},
             success: function (response) {
-                alert("Item added to cart!");
+                if(quantityValue == 1) {
+                    alert(quantityValue + " item added to cart!");
+                } else {
+                    alert(quantityValue + " items added to cart!");
+                }
             },
             error: function (result) {
                 // do something.
@@ -46,6 +56,8 @@
                            <div class="text-center">
                                <!-- Product name-->
                                <h5 class="fw-bolder">${item.name}</h5>
+                               <!-- Product name-->
+                               <h6 class="fw-bolder">${item.description}</h6>
                                <!-- Product price-->
                                <c:if test="${item.sale > 0}">
                                    <span class="text-muted text-decoration-line-through">${item.price}.00</span>
@@ -56,10 +68,15 @@
                                 </c:if>
                            </div>
                        </div>
+
                        <!-- Product actions-->
-                       <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                           <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="addToCart(${item.id})">Add to cart</a></div>
+                       <div class="input-group mb-3 card-footer p-4 pt-0 border-top-0 bg-transparent">
+                           <input type="number" placeholder="0" id="quantity${item.id}" min="1" onchange="changeValue('quantity${item.id}')" class="form-control">
+                           <div class="input-group-append">
+                               <button class="btn btn-outline-dark mt-auto" onclick="addToCart(${item.id}, quantityValue)" type="button">Add to Cart</button>
+                           </div>
                        </div>
+
                    </div>
                </div>
            </c:forEach>

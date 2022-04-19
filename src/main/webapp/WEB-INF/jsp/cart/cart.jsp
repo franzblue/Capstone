@@ -12,12 +12,13 @@
 
         <c:if test="${empty cartItems[0].shoppingCart.user.username}">
             <h1>$Your Cart Is Empty</h1>
+            <h2 id="totalDue">TOTAL AMOUNT DUE: </h2>
         </c:if>
         <c:if test="${not empty cartItems[0].shoppingCart.user.username}">
             <h1>${cartItems[0].shoppingCart.user.username}'s Shopping Cart</h1>
+            <h2 id="totalDue">TOTAL AMOUNT DUE: </h2>
+            <p class="text-muted" style="display: flex; justify-content: center;">Please review items below.</p>
         </c:if>
-        <h2 id="totalDue">TOTAL AMOUNT DUE: </h2>
-        <p class="text-muted" style="display: flex; justify-content: center;">Please review items below.</p>
         <hr>
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-3 justify-content-center">
 
