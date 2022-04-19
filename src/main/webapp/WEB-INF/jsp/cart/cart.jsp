@@ -9,7 +9,13 @@
 </script>
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
-        <h1>${cartItems[0].shoppingCart.user.username}'s Shopping Cart</h1>
+
+        <c:if test="${empty cartItems[0].shoppingCart.user.username}">
+            <h1>$Your Cart Is Empty</h1>
+        </c:if>
+        <c:if test="${not empty cartItems[0].shoppingCart.user.username}">
+            <h1>${cartItems[0].shoppingCart.user.username}'s Shopping Cart</h1>
+        </c:if>
         <h2 id="totalDue">TOTAL AMOUNT DUE: </h2>
         <p class="text-muted" style="display: flex; justify-content: center;">Please review items below.</p>
         <hr>
@@ -73,8 +79,6 @@
          totalz += this.pricez * this.quantz;
 
     </script>
-
-
 
 <%--    <b>Complete User: ${item.shoppingCart.user}</b>--%>
 <%--    <hr>--%>

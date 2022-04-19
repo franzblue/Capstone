@@ -77,8 +77,6 @@ public class CartController {
 
         response.addObject("cartItems", cartItems);
 
-
-
         return response;
     }
 
@@ -124,7 +122,7 @@ public class CartController {
         }
 
         shoppingCart.setUser(loggedInUser);
-
+        shoppingCart.setStatus("PENDING");
         shoppingCartDao.save(shoppingCart);
 
 
@@ -205,6 +203,39 @@ public class CartController {
         orderProduct.setOrder(order);
 
         // save this using the dao
+
+
+        return response;
+    }
+
+    @RequestMapping(value = "/cart/checkout", method = RequestMethod.POST)
+    public ModelAndView cartCheckout() throws Exception {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("redirect:/cart/cart");
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipleName = authentication.getName();
+        User loggedInUser = userDao.findUserByUsername(currentPrincipleName);
+
+
+        ShoppingCart shoppingCart = shoppingCartDao.findByUser(loggedInUser);
+
+        if (shoppingCart == null) {
+            shoppingCart = new ShoppingCart();
+        }
+
+        shoppingCart.setUser(loggedInUser);
+        shoppingCart.setStatus("PAID");
+
+        shoppingCartDao.save(shoppingCart);
+
+        List<CartItem> cartItem = cartItemDao.findAllByShoppingCart(shoppingCart);
+        log.info("cart items", cartItem);
+//        cartItem.clear();
+//        log.info("cart items", cartItem);
+
+
+        cartItemDao.deleteAll(cartItem);
 
 
         return response;

@@ -113,7 +113,7 @@
                     </ul>
                 </li>
             </ul>
-            <form action="/../cart/cart" class="d-flex">
+            <form action="/cart/checkout" method="POST" class="d-flex">
                 <button class="btn btn-outline-dark" type="submit">
                     <i class="bi-cart-fill me-1"></i>
                     Checkout

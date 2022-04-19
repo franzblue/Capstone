@@ -22,4 +22,7 @@ public class ShoppingCart {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    @Column(name = "status")
+    private String status;
+
 }
