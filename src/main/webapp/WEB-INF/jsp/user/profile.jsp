@@ -25,8 +25,8 @@
     <div class="row justify-content-center">
         <div class="col-md-7 col-lg-4 mb-5 mb-lg-0 wow fadeIn">
             <div class="card border-0 shadow">
-                <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Change Picture</div>
-                <img onclick="editPic()" src="${form.image}" alt="profile picture">
+                <div onclick="editPic()" class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem; cursor: pointer;">Change Picture</div>
+                <img onclick="editPic()" src="${form.image}" alt="profile picture" style=" cursor: pointer;">
                 <div class="card-body p-1-9 p-xl-5">
                     <div class="mb-4">
                         <h3 class="h4 mb-0">${form.firstName} ${form.lastName}</h3>
