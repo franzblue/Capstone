@@ -14,16 +14,16 @@
 
 </c:choose>
 
-
+<div class="card" style="width: 25rem; margin: 0 auto; float: none; margin-bottom: 100px;">
 <form action="/cart/addProductSubmit" method="post">
-
 
     <input type="hidden" name="id" value="${form.id}">
 
-    <div class="form-group">
-        <label for="nameId">Name </label>
+    <div class="form-group card-body">
+        <label for="nameId">Name: </label>
+        <br>
         <input type="text" name="name" id="nameId" aria-describedby="nameHelp" placeholder="Enter name" value="${form.name}">
-        <%--        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>--%>
+        <small id="emailHelp" class="form-text text-muted">Product Name</small>
     </div>
     <c:forEach items="${bindingResult.getFieldErrors('name')}" var="error">
         <div style="color: red;">
@@ -31,8 +31,6 @@
         </div>
     </c:forEach>
 
-
-    <br>
 <%--    <div class="form-group">--%>
 <%--        <label for="nameId">Description </label>--%>
 <%--        <input type="text" name="desription" id="descriptionId" aria-describedby="descriptionHelp" placeholder="Enter description" value="${form.description}">--%>
@@ -45,9 +43,9 @@
 <%--    </c:forEach>--%>
 <%--    <br>--%>
 
-    <br>
-    <div class="form-group">
-        <label for="descriptionId">Description </label>
+    <div class="form-group card-body">
+        <label for="descriptionId">Description: </label>
+        <br>
         <input type="text" name="description" id="descriptionId" aria-describedby="descriptionHelp" placeholder="Enter description" value="${form.description}">
         <small id="descriptionHelp" class="form-text text-muted">Please enter your description</small>
     </div>
@@ -56,42 +54,34 @@
                 ${error.getDefaultMessage()}
         </div>
     </c:forEach>
-    <br>
 
-    <div class="form-group">
-        <label for="priceId">Price </label>
+    <div class="form-group card-body">
+        <label for="priceId">Price: </label>
+        <br>
         <input type="number" name="price" id="priceId" aria-describedby="ageHelp" placeholder="Enter price" value="${form.price}">
-        <small id="priceHelp" class="form-text text-muted">Please enter the price</small>
+        <small id="priceHelp" class="form-text text-muted">Please enter the price in whole dollars</small>
     </div>
     <c:forEach items="${bindingResult.getFieldErrors('price')}" var="error">
         <div style="color: red;">
                 ${error.getDefaultMessage()}
         </div>
     </c:forEach>
-    <br>
 
-    <div class="form-group">
-        <label for="saleId">Sale Price </label>
+    <div class="form-group card-body">
+        <label for="saleId">Sale Price: </label>
+        <br>
         <input type="number" name="sale" id="saleId" aria-describedby="ageHelp" placeholder="Enter sale" value="${form.sale}">
-        <small id="saleHelp" class="form-text text-muted">If on sale, enter new price</small>
+        <small id="saleHelp" class="form-text text-muted">If on sale, enter discounted price here</small>
     </div>
     <c:forEach items="${bindingResult.getFieldErrors('sale')}" var="error">
         <div style="color: red;">
                 ${error.getDefaultMessage()}
         </div>
     </c:forEach>
-    <br>
 
-
-
-
-
-
-    <br>
-
-
-    <div class="form-group">
-        <label for="imageId">Image </label>
+    <div class="form-group card-body">
+        <label for="imageId">Image: </label>
+        <br>
         <input type="text" name="image" id="imageId" aria-describedby="sexHelp" placeholder="Enter image" value="${form.image}">
         <small id="imageHelp" class="form-text text-muted">Please enter the image</small>
     </div>
@@ -100,17 +90,20 @@
                 ${error.getDefaultMessage()}
         </div>
     </c:forEach>
-    <br>
 
-
-    <br>
     <%--    <br>--%>
     <%--    Check Box<input type="checkbox" name="checkbox">--%>
     <%--    <br>--%>
 
-    <br>
-    <button type="submit">Submit</button>
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <button class="btn btn-outline-dark mt-auto card-body" type="submit">Submit</button>
+            </div>
+        </div>
+    </div>
 
 </form>
+</div>
 
 <jsp:include page="../include/footer.jsp"/>

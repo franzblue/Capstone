@@ -29,7 +29,7 @@
 </c:choose>
 
 
-<div class="card" style="width: 25rem;margin: 0 auto; float: none; margin-bottom: 10px;">
+<div class="card" style="width: 25rem; margin: 0 auto; float: none; margin-bottom: 100px;">
     <form action="/animal/addAnimalSubmit" method="post">
         <input type="hidden" name="id" value="${form.id}">
 
@@ -118,7 +118,7 @@
                 <option selected>Choose...</option>
                 <option value="dog">Dog</option>
                 <option value="cat">Cat</option>
-                <option value="small">Other Animals</option>
+                <option value="small">Other</option>
             </select>
             <c:forEach items="${bindingResult.getFieldErrors('species')}" var="error">
                 <div style="color: red;">
@@ -149,7 +149,7 @@
         <%--        <a href="#" class="card-link">Contact Us</a>--%>
         <%--        <a href="#" class="card-link">Sign Up</a>--%>
         <%--    </div>--%>
-</div>
 </form>
+</div>
 
 <jsp:include page="../include/footer.jsp"/>
