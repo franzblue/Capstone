@@ -4,7 +4,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
@@ -22,8 +24,11 @@ public class AddProductBean {
     @NotBlank(message = "Image may not be empty.")
     private String image;
 
+    @NotNull(message= "Price is required.")
+    @Min(value=0, message="Positive price required.")
     private Integer price;
 
+    @Min(value=0, message="Positive price required.")
     private Integer sale;
 
 }

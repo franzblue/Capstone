@@ -6,9 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.validator.constraints.Length;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.*;
 
 @Getter
 @Setter
@@ -29,6 +27,8 @@ public class AnimalTableBean {
     @NotBlank(message = "Description may not be empty.")
     private String description;
 
+    @NotNull(message= "Age is required.")
+    @Min(value=0, message="Surely you cannot have an negative age!")
     private Integer age;
 
     @NotBlank(message = "Sex may not be empty.")

@@ -73,7 +73,7 @@
         <div class="form-group card-body">
             <label for="ageId">Age: </label>
             <br>
-            <input type="number" name="age" id="ageId" aria-describedby="ageHelp" placeholder="Enter age" value="${form.age}">
+            <input type="number" name="age" min="0" id="ageId" aria-describedby="ageHelp" placeholder="Enter age" value="${form.age}">
             <small id="ageHelp" class="form-text text-muted">Please enter the age</small>
         </div>
         <c:forEach items="${bindingResult.getFieldErrors('age')}" var="error">

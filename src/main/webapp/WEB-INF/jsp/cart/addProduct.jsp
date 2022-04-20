@@ -58,7 +58,7 @@
     <div class="form-group card-body">
         <label for="priceId">Price: </label>
         <br>
-        <input type="number" name="price" id="priceId" aria-describedby="ageHelp" placeholder="Enter price" value="${form.price}">
+        <input type="number" name="price" min="0" id="priceId" aria-describedby="ageHelp" placeholder="Enter price" value="${form.price}">
         <small id="priceHelp" class="form-text text-muted">Please enter the price in whole dollars</small>
     </div>
     <c:forEach items="${bindingResult.getFieldErrors('price')}" var="error">
@@ -70,7 +70,7 @@
     <div class="form-group card-body">
         <label for="saleId">Sale Price: </label>
         <br>
-        <input type="number" name="sale" id="saleId" aria-describedby="ageHelp" placeholder="Enter sale" value="${form.sale}">
+        <input type="number" name="sale" min="0" id="saleId" aria-describedby="ageHelp" placeholder="Enter sale" value="${form.sale}">
         <small id="saleHelp" class="form-text text-muted">If on sale, enter discounted price here</small>
     </div>
     <c:forEach items="${bindingResult.getFieldErrors('sale')}" var="error">
