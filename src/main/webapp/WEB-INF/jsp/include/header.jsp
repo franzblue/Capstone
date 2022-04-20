@@ -92,14 +92,35 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                <sec:authorize access="hasAnyAuthority('ADMIN')">
+<%--                    <li class="nav-item"><a class="nav-link" href="/user/search">User Table</a></li>--%>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="adminNavbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Admin</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/user/search">User Table</a></li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li><a class="dropdown-item" href="#">Add Animal</a></li>
+                            <li><a class="dropdown-item" href="#">Add Product</a></li>
+<%--                            <li><a class="dropdown-item" href="/../animal/table/small">Small Animals</a></li>--%>
+                        </ul>
+                    </li>
+
+
+
+
+
+                </sec:authorize>
+
                 <li class="nav-item"><a class="nav-link" href="/../home">Home</a></li>
 
                 <sec:authorize access="!isAuthenticated()">
-                    | <a href="/login/login">Log In</a>
+                    <li class="nav-item"><a class="nav-link" href="/login/login">Log In</a></li>
                 </sec:authorize>
                 <sec:authorize access="isAuthenticated()">
                     <li class="nav-item"><a class="nav-link" href="/../user/profile/${principal.username}">Profile</a></li>
                 </sec:authorize>
+
 
                 <li class="nav-item"><a class="nav-link" href="/../cart/shop">Shop</a></li>
                 <li class="nav-item dropdown">

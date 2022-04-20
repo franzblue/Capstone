@@ -14,7 +14,7 @@ public interface AnimalDAO extends JpaRepository<Animal, Long> {
     List<Animal> findAnimalsByNameContainingOrSpeciesContainingOrBreedContainingOrDescriptionContainingOrSexContaining(
 //            @Param("id") Integer id,
             @Param("name") String name,
-            @Param("species") String speices,
+            @Param("species") String species,
             @Param("breed") String breed,
             @Param("description") String description,
 //            @Param("age") Integer age,

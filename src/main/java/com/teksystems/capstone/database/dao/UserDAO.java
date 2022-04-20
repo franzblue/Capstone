@@ -46,4 +46,12 @@ public interface UserDAO extends JpaRepository<User, Long> {
 
     @Query(value = "SELECT * FROM users ORDER BY address", nativeQuery = true)
     List<User> sortByAddress();
+
+    List<User> findUsersByFirstNameContainingOrLastNameContainingOrEmailContainingOrUsernameContaining(
+        @Param("firstName") String firstName,
+        @Param("lastName") String lastName,
+        @Param("email") String email,
+        @Param("username") String username
+    );
+
 }

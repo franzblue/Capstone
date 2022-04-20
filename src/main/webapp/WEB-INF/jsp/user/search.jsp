@@ -115,7 +115,7 @@
     }
 </style>
 
-<h1>Search</h1>
+<h1>User Table</h1>
 <form action="/user/search" method="get">
     <input type="text" placeholder=${searchValue} name="searchId"/>
     <button type="submit">Submit</button>
