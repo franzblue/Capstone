@@ -7,6 +7,7 @@ import com.teksystems.capstone.database.entity.UserRole;
 import com.teksystems.capstone.formBean.RegisterFormBean;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -26,6 +27,9 @@ public class LoginController {
 
     @Autowired
     private UserRoleDAO userRoleDao;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
 
     @RequestMapping(value = "/login/login", method = RequestMethod.GET)
@@ -77,16 +81,22 @@ public class LoginController {
         user.setEmail(form.getEmail());
         user.setFirstName(form.getFirstName());
         user.setLastName(form.getLastName());
-        user.setPassword(form.getPassword());
+        String password = passwordEncoder.encode(form.getPassword());
+        user.setPassword(password);
         user.setUsername(form.getUsername());
-        user.setDogLove(form.getDogLove());
-        user.setCatLove(form.getCatLove());
-        user.setSmallLove(form.getSmallLove());
-        user.setImage(form.getImage());
-        user.setTelephone(form.getTelephone());
-        user.setAddress(form.getAddress());
-        user.setDescription(form.getDescription());
-        user.setBlurb(form.getBlurb());
+
+        // These values are set to default
+        user.setDogLove(50);
+        user.setCatLove(50);
+        user.setSmallLove(50);
+        user.setImage("../../../pub/images/placeholder.png");
+        user.setTelephone("(555)-555-5555");
+        user.setAddress("123 Default Avenue");
+        user.setDescription("'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. " +
+                "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. " +
+                "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. " +
+                "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'");
+        user.setBlurb("Feel free to add a description about yourself!");
 
         userDao.save(user);
 

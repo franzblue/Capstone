@@ -77,7 +77,7 @@
             },
             error: function (result) {
                 // do something.
-                console.log("product ?");
+                console.log("cart header ?");
             }
         });
     }

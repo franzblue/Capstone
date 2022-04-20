@@ -99,6 +99,244 @@
 <%--    });--%>
 
 <%--</script>--%>
+
+
+<div class="card" style="width: 18rem;margin: 0 auto; float: none; margin-bottom: 10px;">
+    <c:choose>
+
+    <c:when test = "${empty form.id}">
+    <h1>Sign Up</h1>
+    <form class="form-horizontal" action="/login/registerSubmit" method="post">
+        </c:when>
+
+        <c:when test = "${not empty form.id}">
+        <h1>Edit User</h1>
+        <form class="form-horizontal" action="/user/editSubmit/${form.id}" method="post">
+            </c:when>
+
+            </c:choose>
+
+            <div class="form-group">
+                <input type="hidden" name="id" value="${form.id}">
+                <label for="firstNameId" class="col-sm-2 control-label">First Name: </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="firstName" id="firstNameId" placeholder="First Name" value="${form.firstName}">
+                </div>
+            </div>
+            <c:forEach items="${bindingResult.getFieldErrors('firstName')}" var="error">
+                <div style="color: red;">
+                        ${error.getDefaultMessage()}
+                </div>
+            </c:forEach>
+            <div class="form-group">
+                <label for="lastNameId" class="col-sm-2 control-label">Last Name: </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="lastName" id="lastNameId" placeholder="Last Name" value="${form.lastName}">
+                </div>
+            </div>
+            <c:forEach items="${bindingResult.getFieldErrors('lastName')}" var="error">
+                <div style="color: red;">
+                        ${error.getDefaultMessage()}
+                </div>
+            </c:forEach>
+
+            <c:if test="${not empty form.email}">
+                <div class="form-group">
+                    <label for="emailId" class="col-sm-2 control-label disabled">Email: </label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" name="email" id="emailId" placeholder="Email" value="${form.email}" disabled>
+                    </div>
+                </div>
+            </c:if>
+
+            <c:if test="${empty form.email}">
+                <div class="form-group">
+                    <label for="emailId" class="col-sm-2 control-label">Email: </label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" name="email" id="emailId" placeholder="Email" value="${form.email}">
+                    </div>
+                </div>
+            </c:if>
+
+
+            <c:forEach items="${bindingResult.getFieldErrors('email')}" var="error">
+                <div style="color: red;">
+                        ${error.getDefaultMessage()}
+                </div>
+            </c:forEach>
+            <div class="form-group">
+                <label for="usernameId" class="col-sm-2 control-label">Username: </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="username" id="usernameId" placeholder="Username" value="${form.username}">
+                </div>
+            </div>
+            <c:forEach items="${bindingResult.getFieldErrors('username')}" var="error">
+                <div style="color: red;">
+                        ${error.getDefaultMessage()}
+                </div>
+            </c:forEach>
+
+            <c:if test="${not empty form.password}">
+                <div class="form-group">
+                    <label for="passwordId" class="col-sm-2 control-label disabled">Password: </label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" name="password" id="passwordId" placeholder="Password" value="${form.password}" disabled>
+                    </div>
+                </div>
+            </c:if>
+
+            <c:if test="${empty form.password}">
+                <div class="form-group">
+                    <label for="passwordId" class="col-sm-2 control-label">Password: </label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" name="password" id="passwordId" placeholder="Password" value="${form.password}">
+                    </div>
+                </div>
+            </c:if>
+
+            <c:if test="${empty form.password}">
+                <div class="form-group">
+                    <label for="confirmPasswordId" class="col-sm-2 control-label">Password: </label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" name="confirmPassword" id="confirmPasswordId" placeholder="Confirm Password">
+                    </div>
+                </div>
+            </c:if>
+
+            <c:forEach items="${bindingResult.getFieldErrors('password')}" var="error">
+                <div style="color: red;">
+                        ${error.getDefaultMessage()}
+                </div>
+            </c:forEach>
+
+            <div class="form-group">
+                <label for="telephoneId">Telephone:</label>
+                <small>ex. 123-456-7890</small>
+                <div class="col-sm-10">
+                    <input type="tel" id="telephoneId" name="telephone" placeholder="Telephone" value="${form.telephone}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="addressId">Address:</label>
+                <small>ex. Street Address</small>
+                <div class="col-sm-10">
+                    <input type="tel" id="addressId" name="text" placeholder="Address" value="${form.address}">
+                </div>
+            </div>
+
+            <c:if test="${empty form.blurb}">
+                <div class="form-group">
+                    <label for="blurbId">Describe yourself in one sentence: </label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" id="blurbId" name="blurb" rows="1" value="${form.blurb}" placeholder="Short blurb"></textarea>
+                    </div>
+                </div>
+            </c:if>
+
+            <c:if test="${not empty form.blurb}">
+                <div class="form-group">
+                    <label for="blurbId">Describe yourself in one sentence: </label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" id="blurbId" name="blurb" rows="1" value="${form.blurb}" placeholder="${form.blurb}"></textarea>
+                    </div>
+                </div>
+            </c:if>
+
+
+            <c:if test="${empty form.description}">
+                <div class="form-group">
+                    <label for="blurbId">Describe yourself in more detail: </label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" id="descriptionId" name="description" rows="3" value="${form.description}" placeholder="Longer description"></textarea>
+                    </div>
+                </div>
+            </c:if>
+
+            <c:if test="${not empty form.description}">
+                <div class="form-group">
+                    <label for="blurbId">Describe yourself in more detail: </label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" id="descriptionId" name="description" rows="3" value="${form.description}" placeholder="${form.description}"></textarea>
+                    </div>
+                </div>
+            </c:if>
+
+            <div class="slidecontainer">
+                <label for="dogRange" class="col-sm-2 control-label">Dog Person: </label>
+                <br>
+                <input type="range" min="1" max="100" class="slider" name="dogLove" id="dogRange" value="${form.dogLove}">
+                <div id="dogRangeValue"></div>
+            </div>
+            <div class="slidecontainer">
+                <label for="catRange" class="col-sm-2 control-label">Cat Person: </label>
+                <br>
+                <input type="range" min="1" max="100" class="slider" name="catLove" id="catRange" value="${form.catLove}">
+                <div id="catRangeValue"></div>
+            </div>
+            <div class="slidecontainer">
+                <label for="otherRange" class="col-sm-2 control-label">Small Animals: </label>
+                <br>
+                <input type="range" min="1" max="100" class="slider" name="smallLove" id="otherRange" value="${form.smallLove}">
+                <div id="otherRangeValue"></div>
+            </div>
+            <%--        <div class="custom-file">--%>
+            <%--            <label class="custom-file-label" for="imageId">Upload Profile Picture: </label>--%>
+            <%--            <input type="file" class="custom-file-input" id="imageId" name="image" value="form.image">--%>
+            <%--        </div>--%>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+</div>
+
+
+
+
+<script>
+    var dogSlider = document.getElementById("dogRange");
+    var dogOutput = document.getElementById("dogRangeValue");
+    dogOutput.innerHTML = dogSlider.value; // Display the default slider value
+
+    // Update the current slider value (each time you drag the slider handle)
+    dogSlider.oninput = function() {
+        dogOutput.innerHTML = this.value;
+    }
+    var catSlider = document.getElementById("catRange");
+    var catOutput = document.getElementById("catRangeValue");
+    catOutput.innerHTML = catSlider.value; // Display the default slider value
+
+    // Update the current slider value (each time you drag the slider handle)
+    catSlider.oninput = function() {
+        catOutput.innerHTML = this.value;
+    }
+    var otherSlider = document.getElementById("otherRange");
+    var otherOutput = document.getElementById("otherRangeValue");
+    otherOutput.innerHTML = otherSlider.value; // Display the default slider value
+
+    // Update the current slider value (each time you drag the slider handle)
+    otherSlider.oninput = function() {
+        otherOutput.innerHTML = this.value;
+    }
+</script>
+
+<%--<jsp:include page="../include/footer.jsp"/>--%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%--NEW FORM--%>
+
 <style>
 
 
@@ -281,7 +519,7 @@
             <c:if test="${empty form.password}">
                 <div class="form-field d-flex align-items-center">
                     <span class="far fa-password"></span>
-                    <input type="password" class="form-control" name="password" id="passwordId" placeholder="Password" value="${form.password}">
+                    <input type="password" class="form-control" name="password" id="passwordId" placeholder="Password" value="${form.password}" disabled>
                 </div>
             </c:if>
             <c:if test="${empty form.password}">
@@ -312,85 +550,8 @@
                 </div>
             </c:if>
 
-
-
-
-            <%--DESRIPTION--%>
-            <c:if test="${not empty form.blurb}">
-                <div class="form-field d-flex align-items-center">
-                    <span class="far fa-blurb"></span>
-                    <textarea class="form-control" id="blurbId" name="blurb" cols="35" rows="3"
-                              style="padding-left: 5px; padding-top: 5px; resize: none; outline: none; border: none; background: none;"
-                              value="${form.blurb}" placeholder="${form.blurb}"></textarea>
-                </div>
-            </c:if>
-
-            <c:if test="${not empty form.description}">
-                <div class="form-field d-flex align-items-center">
-                    <span class="far fa-description"></span>
-                    <textarea class="form-control" id="descriptionId" name="description" cols="30" rows="5"
-                              style="padding-left: 5px; padding-top: 5px; resize: none; outline: none; border: none; background: none;"
-                              value="${form.description}" placeholder="${form.description}"></textarea>
-                </div>
-            </c:if>
-
-
-            <%--SLIDERS--%>
-            <c:if test="${not empty form.dogLove}">
-                <div class="slidecontainer">
-                    <label for="dogRange" class="col-sm-2 control-label">Dog Person: </label>
-                    <br>
-                    <input type="range" min="1" max="100" class="slider" name="dogLove" id="dogRange" value="${form.dogLove}">
-                    <div id="dogRangeValue"></div>
-                </div>
-            </c:if>
-            <c:if test="${not empty form.catLove}">
-                <div class="slidecontainer">
-                    <label for="catRange" class="col-sm-2 control-label">Cat Person: </label>
-                    <br>
-                    <input type="range" min="1" max="100" class="slider" name="catLove" id="catRange" value="${form.catLove}">
-                    <div id="catRangeValue"></div>
-                </div>
-            </c:if>
-            <c:if test="${not empty form.smallLove}">
-                <div class="slidecontainer">
-                    <label for="otherRange" class="col-sm-2 control-label">Small Animals: </label>
-                    <br>
-                    <input type="range" min="1" max="100" class="slider" name="smallLove" id="otherRange" value="${form.smallLove}">
-                    <div id="otherRangeValue"></div>
-                </div>
-            </c:if>
-                <br>
-
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
         <br>
         <div class="text-center fs-6"> <a href="/index">Home Page</a></div>
 </div>
-
-<script>
-    var dogSlider = document.getElementById("dogRange");
-    var dogOutput = document.getElementById("dogRangeValue");
-    dogOutput.innerHTML = dogSlider.value; // Display the default slider value
-
-    // Update the current slider value (each time you drag the slider handle)
-    dogSlider.oninput = function() {
-        dogOutput.innerHTML = this.value;
-    }
-    var catSlider = document.getElementById("catRange");
-    var catOutput = document.getElementById("catRangeValue");
-    catOutput.innerHTML = catSlider.value; // Display the default slider value
-
-    // Update the current slider value (each time you drag the slider handle)
-    catSlider.oninput = function() {
-        catOutput.innerHTML = this.value;
-    }
-    var otherSlider = document.getElementById("otherRange");
-    var otherOutput = document.getElementById("otherRangeValue");
-    otherOutput.innerHTML = otherSlider.value; // Display the default slider value
-
-    // Update the current slider value (each time you drag the slider handle)
-    otherSlider.oninput = function() {
-        otherOutput.innerHTML = this.value;
-    }
-</script>
