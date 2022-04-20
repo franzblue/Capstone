@@ -13,4 +13,6 @@ import java.util.List;
 public interface CartItemDAO extends JpaRepository<CartItem, Long> {
 
     List<CartItem> findAllByShoppingCart(ShoppingCart shoppingCart);
+
+    CartItem findCartItemById(Integer cartItemId);
 }

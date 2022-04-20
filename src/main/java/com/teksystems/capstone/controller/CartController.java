@@ -74,6 +74,19 @@ public class CartController {
 
     }
 
+    @RequestMapping(value = "/cart/removeFromCart", method = RequestMethod.POST)
+    public ModelAndView removeFromCart(@RequestParam(name = "productId") Integer productId) throws Exception {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("redirect:/cart/cart");
+
+        CartItem cartItem = cartItemDao.findCartItemById(productId);
+
+        cartItemDao.delete(cartItem);
+
+        return response;
+
+    }
+
     @RequestMapping(value = "/cart/addProductSubmit", method = {RequestMethod.POST, RequestMethod.GET})
     public ModelAndView registerAnimalSubmit(@Valid AddProductBean form, BindingResult bindingResult) throws Exception {
         ModelAndView response = new ModelAndView();

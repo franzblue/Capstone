@@ -60,7 +60,9 @@
             </c:choose>
             <p class="card-text">Quantity: ${item.quantity}</p>
         </div>
-        <a href="#" class="btn btn-secondary">Remove ${item.product.name}</a>
+
+            <button class="btn btn-outline-danger mt-auto" onclick="removeFromCart(${item.id})" type="button">Remove From Cart</button>
+
         <div class="card-footer">
             <small class="text-muted">Item Total: $${item.quantity * item.product.price}.00</small>
         </div>
@@ -68,6 +70,22 @@
     </div>
 
     <script>
+
+        function removeFromCart(productId) {
+            console.log("testing " + productId);
+            $.ajax({
+                type: "POST",
+                url: "/cart/removeFromCart/",
+                data: {"productId" : productId},
+                success: function (response) {
+                    $("body").html(response);
+                },
+                error: function (result) {
+                    // do something.
+                    console.log("remove from cart ?");
+                }
+            });
+        }
 
         if(${item.product.sale == 0}){
             pricez = ${item.product.price};

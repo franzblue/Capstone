@@ -12,7 +12,7 @@
     function addToCart(productId, quantityValue) {
         $.ajax({
             type: "POST",
-            url: "/cart/addToCart",
+            url: "/cart/addToCart/",
             data: {"productId" : productId, "quantityValue" : quantityValue},
             success: function (response) {
                 if(quantityValue == 1) {
