@@ -2,6 +2,20 @@
 
 <jsp:include page="../include/header.jsp"/>
 
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {background-color: #f2f2f2;}
+</style>
+
 <script>
     function sortById() {
         $.ajax({
@@ -107,6 +121,21 @@
             }
         });
     }
+    function changeRole(roleId) {
+        console.log(roleId);
+        $.ajax({
+            type: "GET",
+            url: "/user/changeRole",
+            data: {"roleId" : roleId},
+            success: function (response) {
+                alert("Role updated.")
+            },
+            error: function (result) {
+                // do something.
+                console.log("Id ?");
+            }
+        });
+    }
 </script>
 
 <style>
@@ -122,7 +151,7 @@
 </form>
 
 <table class="table">
-    <tr scope="row">
+    <tr scope="row" style="background: #8f8f8f">
         <th onclick="sortById()">ID</th>
         <th onclick="sortByRole()">Role</th>
         <th onclick="sortByEmail()">Email</th>
@@ -136,7 +165,14 @@
     <c:forEach items="${users}" var="user">
         <tr scope="row">
             <td>${user.id}</td>
-            <td>${user.role}</td>
+            <td>
+                <select name="role" id="roleId" value="${form.species}">
+                <option value="${user.role}">${user.role}</option>
+                <option value="ADMIN">ADMIN</option>
+                <option value="USER">USER</option>
+                </select>
+                <button onclick="changeRole(${user.id})">Change</button>
+            </td>
             <td>${user.email}</td>
             <td>${user.firstName}</td>
             <td>${user.lastName}</td>

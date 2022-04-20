@@ -39,6 +39,25 @@ public class UserController {
     private UserRoleDAO userRoleDao;
 
 
+//    @PathVariable("roleUserId") Integer roleUserId
+//    @RequestParam(name = "roleUserId",required= false) Integer roleUserId
+
+    @RequestMapping(value = "/user/changeRole", method = RequestMethod.GET)
+    public void changeRole(@RequestParam(name = "roleId", required= false) Integer roleId) throws Exception {
+
+        User user = userDao.findById(roleId);
+
+        if(user.getRole().equals("ADMIN")) {
+            user.setRole("USER");
+        } else if(user.getRole().equals("USER")) {
+            user.setRole("ADMIN");
+        }
+
+        userDao.save(user);
+
+
+    }
+
     @GetMapping("/user/search")
     public ModelAndView search(@RequestParam(name = "searchId", required = false, defaultValue = "") String searchValue) {
         ModelAndView response = new ModelAndView();

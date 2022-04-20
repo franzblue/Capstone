@@ -18,7 +18,7 @@
 
 
 
-<body onload="showCart()">
+<body>
 <%--<ul class="nav justify-content-end">--%>
 
 <%--    <li class="nav-item">--%>
@@ -66,22 +66,22 @@
 <%--    <a href="/user/register">Sign Up</a> |--%>
 <%--    <a href="/user/search">Search</a>--%>
 
-<script>
-    function showCart(selectObject) {
-        $.ajax({
-            type: "GET",
-            url: "/cart/showCart",
-            success: function (response) {
-                console.log("test")
-                $("cartId").html(69);
-            },
-            error: function (result) {
-                // do something.
-                console.log("cart header ?");
-            }
-        });
-    }
-</script>
+<%--<script>--%>
+<%--    function showCart(selectObject) {--%>
+<%--        $.ajax({--%>
+<%--            type: "GET",--%>
+<%--            url: "/cart/showCart",--%>
+<%--            success: function (response) {--%>
+<%--                console.log("test")--%>
+<%--                $("cartId").html(69);--%>
+<%--            },--%>
+<%--            error: function (result) {--%>
+<%--                // do something.--%>
+<%--                console.log("cart header ?");--%>
+<%--            }--%>
+<%--        });--%>
+<%--    }--%>
+<%--</script>--%>
 
 
 <!-- Navigation-->
