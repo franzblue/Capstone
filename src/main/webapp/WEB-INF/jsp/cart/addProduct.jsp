@@ -2,6 +2,9 @@
 
 <jsp:include page="../include/cartHeader.jsp"/>
 
+
+
+<div class="card" style="width: 25rem; margin: 0 auto; float: none; margin-bottom: 100px; background: #d7e4ef">
 <c:choose>
 
     <c:when test = "${empty form.id}">
@@ -13,8 +16,6 @@
     </c:when>
 
 </c:choose>
-
-<div class="card" style="width: 25rem; margin: 0 auto; float: none; margin-bottom: 100px;">
 <form action="/cart/addProductSubmit" method="post">
 
     <input type="hidden" name="id" value="${form.id}">
@@ -98,7 +99,7 @@
     <div class="container">
         <div class="row">
             <div class="col text-center">
-                <button class="btn btn-outline-dark mt-auto card-body" type="submit">Submit</button>
+                <button style="background: #8f8f8f" class="btn btn-outline-dark mt-auto card-body" type="submit">Submit</button>
             </div>
         </div>
     </div>

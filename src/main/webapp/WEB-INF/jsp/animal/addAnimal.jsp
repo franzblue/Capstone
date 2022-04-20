@@ -2,15 +2,6 @@
 
 <jsp:include page="../include/header.jsp"/>
 
-<c:choose>
-
-    <c:when test = "${empty form.id}">
-        <h1>Add Animal</h1>
-    </c:when>
-
-    <c:when test = "${not empty form.id}">
-        <h1>Edit Animal</h1>
-    </c:when>
 
 <%--    <form>--%>
 
@@ -26,10 +17,21 @@
 <%--    </form>--%>
 
 
-</c:choose>
 
 
-<div class="card" style="width: 25rem; margin: 0 auto; float: none; margin-bottom: 100px;">
+
+<div class="card" style="width: 25rem; margin: 0 auto; float: none; margin-bottom: 100px; background: #d7e4ef">
+    <c:choose>
+
+        <c:when test = "${empty form.id}">
+            <h1>Add Animal</h1>
+        </c:when>
+
+        <c:when test = "${not empty form.id}">
+            <h1>Edit Animal</h1>
+        </c:when>
+
+    </c:choose>
     <form action="/animal/addAnimalSubmit" method="post">
         <input type="hidden" name="id" value="${form.id}">
 
@@ -134,7 +136,7 @@
         <div class="container">
             <div class="row">
                 <div class="col text-center">
-                    <button class="btn btn-outline-dark mt-auto card-body" type="submit">Submit</button>
+                    <button style="background: #8f8f8f" class="btn btn-outline-dark mt-auto card-body" type="submit">Submit</button>
                 </div>
             </div>
         </div>

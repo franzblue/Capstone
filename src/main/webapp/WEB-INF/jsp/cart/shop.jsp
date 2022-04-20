@@ -10,6 +10,10 @@
     }
 
     function addToCart(productId, quantityValue) {
+        if(quantityValue < 0) {
+            alert("Please enter a positive quantity.");
+            return null;
+        }
         $.ajax({
             type: "POST",
             url: "/cart/addToCart/",
