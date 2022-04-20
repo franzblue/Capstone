@@ -205,7 +205,7 @@ public class AnimalController {
 
         animalDao.save(animal);
 
-        response.setViewName("redirect:/animal/editAnimal/" + animal.getId());
+        response.setViewName("redirect:/animal/table/" + animal.getBreed());
 
 //        response.setViewName("animal/addAnimal");
 

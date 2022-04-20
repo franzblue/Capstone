@@ -49,9 +49,9 @@
         </div>
         <select class="custom-select" name="species" id="speciesId" value="${form.species}">
             <option selected>Choose...</option>
-            <option value="Dog">Dog</option>
-            <option value="Cat">Cat</option>
-            <option value="Other">Other Animals</option>
+            <option value="dog">Dog</option>
+            <option value="cat">Cat</option>
+            <option value="small">Other Animals</option>
         </select>
         <c:forEach items="${bindingResult.getFieldErrors('species')}" var="error">
             <div style="color: red;">
@@ -104,16 +104,27 @@
     </c:forEach>
     <br>
 
-    <div class="form-group">
-        <label for="sexId">Sex </label>
-        <input type="text" name="sex" id="sexId" aria-describedby="sexHelp" placeholder="Enter sex" value="${form.sex}">
-        <small id="sexHelp" class="form-text text-muted">Please enter the sex</small>
-    </div>
-    <c:forEach items="${bindingResult.getFieldErrors('sex')}" var="error">
-        <div style="color: red;">
-                ${error.getDefaultMessage()}
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="sexId">Sex </label>
+            </div>
+            <select class="custom-select" name="sex" id="sexId" value="${form.sex}">
+                <option selected>Choose...</option>
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
+            </select>
+            <c:forEach items="${bindingResult.getFieldErrors('sex')}" var="error">
+            <div style="color: red;">
+                    ${error.getDefaultMessage()}
+            </div>
+            </c:forEach>
         </div>
-    </c:forEach>
+
+
+
+
+
+
     <br>
 
 

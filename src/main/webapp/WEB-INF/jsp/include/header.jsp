@@ -99,9 +99,11 @@
                         <a class="nav-link dropdown-toggle" id="adminNavbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Admin</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="/user/search">User Table</a></li>
+<%--                            <li><a class="dropdown-item" href="/animal/search">Animal Table</a></li>--%>
+<%--                            <li><a class="dropdown-item" href="/cart/search">Products Table</a></li>--%>
                             <li><hr class="dropdown-divider" /></li>
-                            <li><a class="dropdown-item" href="#">Add Animal</a></li>
-                            <li><a class="dropdown-item" href="#">Add Product</a></li>
+                            <li><a class="dropdown-item" href="/animal/addAnimal">Add Animals</a></li>
+                            <li><a class="dropdown-item" href="/cart/addProduct">Add Products</a></li>
 <%--                            <li><a class="dropdown-item" href="/../animal/table/small">Small Animals</a></li>--%>
                         </ul>
                     </li>

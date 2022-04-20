@@ -2,6 +2,8 @@ package com.teksystems.capstone.controller;
 
 import com.teksystems.capstone.database.dao.*;
 import com.teksystems.capstone.database.entity.*;
+import com.teksystems.capstone.formBean.AddProductBean;
+import com.teksystems.capstone.formBean.AnimalTableBean;
 import com.teksystems.capstone.formBean.RegisterFormBean;
 import com.teksystems.capstone.formBean.ShoppingCartBean;
 import lombok.extern.slf4j.Slf4j;
@@ -10,6 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -55,6 +60,58 @@ public class CartController {
 
         return response;
 
+    }
+
+    @RequestMapping(value = "/cart/addProduct", method = RequestMethod.GET)
+    public ModelAndView adminAddProduct() throws Exception {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("cart/addProduct");
+
+        AddProductBean form = new AddProductBean();
+        response.addObject("form", form);
+
+        return response;
+
+    }
+
+    @RequestMapping(value = "/cart/addProductSubmit", method = {RequestMethod.POST, RequestMethod.GET})
+    public ModelAndView registerAnimalSubmit(@Valid AddProductBean form, BindingResult bindingResult) throws Exception {
+        ModelAndView response = new ModelAndView();
+
+        log.info(form.toString());
+
+        if (bindingResult.hasErrors()) {
+
+            for (ObjectError error : bindingResult.getAllErrors()) {
+                log.info(((FieldError) error).getField() + ": " + error.getDefaultMessage());
+            }
+            response.addObject("bindingResult", bindingResult);
+
+            response.addObject("form", form);
+
+            response.setViewName("cart/addProduct");
+            return response;
+        }
+
+        Product product = productDao.findProductById(form.getId());
+
+        if (product == null) {
+            product = new Product();
+        }
+
+        product.setName(form.getName());
+        product.setDescription(form.getDescription());
+        product.setImage(form.getImage());
+        product.setPrice(form.getPrice());
+        product.setSale(form.getSale());
+
+
+        productDao.save(product);
+
+        response.setViewName("redirect:/cart/shop");
+
+
+        return response;
     }
 
     @RequestMapping(value = "/cart/cart", method = RequestMethod.GET)
