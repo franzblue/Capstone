@@ -145,6 +145,14 @@
         color: #555
     }
 
+    .wrapper .stat {
+        font-weight: 600;
+        font-size: 1.08rem;
+        letter-spacing: 1.3px;
+        padding-left: 10px;
+        color: #555
+    }
+
     .wrapper .form-field input {
         width: 100%;
         display: block;
@@ -205,21 +213,23 @@
 
     <%--Header--%>
     <c:choose>
-    <c:when test = "${empty form.id}">
-    <div class="text-center mt-4 name">Sign Up</div>
-    <form class="p-3 mt-3" action="/login/registerSubmit" method="post">
+        <c:when test = "${empty form.id}">
+            <div class="text-center mt-4 name">Sign Up</div>
+            <form class="p-3 mt-3" action="/login/registerSubmit" method="post">
         </c:when>
 
         <c:when test = "${not empty form.id}">
-        <div class="text-center mt-4 name">Edit User</div>
-        <form class="p-3 mt-3" action="/user/editSubmit/${form.id}" method="post">
-            </c:when>
-            </c:choose>
+            <div class="text-center mt-4 name">Edit User</div>
+            <form class="p-3 mt-3" action="/user/editSubmit/${form.id}" method="post">
+        </c:when>
+    </c:choose>
+            <br>
 
             <%--ID--%>
             <input type="hidden" name="id" value="${form.id}">
 
             <%--FirstName--%>
+        <div class="text-center mt-4 stat">First Name: </div>
             <div class="form-field d-flex align-items-center">
                 <span class="far fa-firstname"></span>
                 <input type="text" class="form-control" name="firstName" id="firstNameId" placeholder="First Name" value="${form.firstName}">
@@ -231,6 +241,7 @@
             </c:forEach>
 
             <%--LastName--%>
+            <div class="text-center mt-4 stat">Last Name: </div>
             <div class="form-field d-flex align-items-center">
                 <span class="far fa-lastname"></span>
                 <input type="text" class="form-control" name="lastName" id="lastNameId" placeholder="Last Name" value="${form.lastName}">
@@ -242,6 +253,7 @@
             </c:forEach>
 
             <%--Email--%>
+            <div class="text-center mt-4 stat">Email: </div>
             <c:if test="${not empty form.email}">
                 <div class="form-field d-flex align-items-center">
                     <span class="far fa-email"></span>
@@ -261,6 +273,7 @@
             </c:forEach>
 
             <%--Username--%>
+            <div class="text-center mt-4 stat">Username: </div>
             <div class="form-field d-flex align-items-center">
                 <span class="far fa-username"></span>
                 <input type="text" class="form-control" name="username" id="usernameId" placeholder="Username" value="${form.username}">
@@ -272,6 +285,7 @@
             </c:forEach>
 
             <%--password--%>
+            <div class="text-center mt-4 stat">Password: </div>
             <c:if test="${not empty form.password}">
                 <div class="form-field d-flex align-items-center">
                     <span class="far fa-password"></span>
@@ -285,6 +299,7 @@
                 </div>
             </c:if>
             <c:if test="${empty form.password}">
+                <div class="text-center mt-4 stat">Confirm Password: </div>
                 <div class="form-field d-flex align-items-center">
                     <span class="far fa-password"></span>
                     <input type="password" class="form-control" name="confirmPassword" id="confirmPasswordId" placeholder="Confirm Password">
@@ -298,17 +313,19 @@
 
             <%--telephone--%>
             <c:if test="${not empty form.telephone}">
+                <div class="text-center mt-4 stat">Telephone: </div>
                 <div class="form-field d-flex align-items-center">
                     <span class="far fa-telephone"></span>
-                    <input type="tel" id="telephoneId" name="telephone" placeholder="Telephone" value="${form.telephone}">
+                    <input type="text" id="telephoneId" name="telephone" placeholder="Telephone" value="${form.telephone}">
                 </div>
             </c:if>
 
             <%--address--%>
             <c:if test="${not empty form.address}">
+                <div class="text-center mt-4 stat">Street Address: </div>
                 <div class="form-field d-flex align-items-center">
                     <span class="far fa-address"></span>
-                    <input type="tel" id="addressId" name="text" placeholder="Address" value="${form.address}">
+                    <input type="text" id="addressId" name="text" placeholder="Address" value="${form.address}">
                 </div>
             </c:if>
 
@@ -317,6 +334,7 @@
 
             <%--DESRIPTION--%>
             <c:if test="${not empty form.blurb}">
+                <div class="text-center mt-4 stat">Your Tagline: </div>
                 <div class="form-field d-flex align-items-center">
                     <span class="far fa-blurb"></span>
                     <textarea class="form-control" id="blurbId" name="blurb" cols="35" rows="3"
@@ -326,6 +344,7 @@
             </c:if>
 
             <c:if test="${not empty form.description}">
+                <div class="text-center mt-4 stat">Describe Yourself: </div>
                 <div class="form-field d-flex align-items-center">
                     <span class="far fa-description"></span>
                     <textarea class="form-control" id="descriptionId" name="description" cols="30" rows="5"
@@ -337,7 +356,9 @@
 
             <%--SLIDERS--%>
             <c:if test="${not empty form.dogLove}">
-                <div class="slidecontainer">
+                <div class="text-center mt-4 stat">Rate Your Preferences: </div>
+                <br>
+                <div class="slidecontainer stat">
                     <label for="dogRange" class="col-sm-2 control-label">Dog Person: </label>
                     <br>
                     <input type="range" min="1" max="100" class="slider" name="dogLove" id="dogRange" value="${form.dogLove}">
@@ -345,7 +366,7 @@
                 </div>
             </c:if>
             <c:if test="${not empty form.catLove}">
-                <div class="slidecontainer">
+                <div class="slidecontainer stat">
                     <label for="catRange" class="col-sm-2 control-label">Cat Person: </label>
                     <br>
                     <input type="range" min="1" max="100" class="slider" name="catLove" id="catRange" value="${form.catLove}">
@@ -353,7 +374,7 @@
                 </div>
             </c:if>
             <c:if test="${not empty form.smallLove}">
-                <div class="slidecontainer">
+                <div class="slidecontainer stat">
                     <label for="otherRange" class="col-sm-2 control-label">Small Animals: </label>
                     <br>
                     <input type="range" min="1" max="100" class="slider" name="smallLove" id="otherRange" value="${form.smallLove}">
