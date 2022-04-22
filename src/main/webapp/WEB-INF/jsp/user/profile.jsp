@@ -30,12 +30,23 @@
                 <div class="card-body p-1-9 p-xl-5">
                     <div class="mb-4">
                         <h3 class="h4 mb-0">${form.firstName} ${form.lastName}</h3>
-                        <span class="text-primary">CEO &amp; Founder</span>
+                        <c:if test="${form.id == 1}">
+                            <span class="text-primary">CEO &amp; Founder</span>
+                        </c:if>
                     </div>
                     <ul class="list-unstyled mb-4">
-                        <li class="mb-3"><a href="#!"><i class="far fa-envelope display-25 me-3 text-secondary"></i>${form.email}</a></li>
-                        <li class="mb-3"><a href="#!"><i class="fas fa-mobile-alt display-25 me-3 text-secondary"></i>${form.telephone}</a></li>
-                        <li><a href="#!"><i class="fas fa-map-marker-alt display-25 me-3 text-secondary"></i>${form.address}</a></li>
+                        <b>
+                            Email:
+                        </b><li class="mb-3">${form.email}</li>
+                        <b>
+                            Username:
+                        </b><li class="mb-3">${form.username}</li>
+                        <b>
+                            Telephone:
+                        </b><li class="mb-3">${form.telephone}</li>
+                        <b>
+                            Address:
+                        </b><li class="mb-3">${form.address}</li>
                     </ul>
                     <!-- <ul class="social-icon-style2 ps-0">
                         <li><a href="#!" class="rounded-3"><i class="fab fa-facebook-f"></i></a></li>

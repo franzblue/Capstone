@@ -9,6 +9,7 @@ import com.teksystems.capstone.formBean.RegisterFormBean;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -24,6 +25,7 @@ import java.util.List;
 
 @Slf4j
 @Controller
+@PreAuthorize("hasAnyAuthority('USER','ADMIN')")
 public class AnimalController {
 
     @Autowired
@@ -158,6 +160,7 @@ public class AnimalController {
         return response;
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/animal/addAnimal", method = RequestMethod.GET)
     public ModelAndView create() throws Exception {
         ModelAndView response = new ModelAndView();
@@ -170,6 +173,7 @@ public class AnimalController {
     }
 
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/animal/addAnimalSubmit", method = {RequestMethod.POST, RequestMethod.GET})
     public ModelAndView registerAnimalSubmit(@Valid AnimalTableBean form, BindingResult bindingResult) throws Exception {
         ModelAndView response = new ModelAndView();
@@ -212,6 +216,7 @@ public class AnimalController {
         return response;
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/animal/editAnimal/{animalId}", method = RequestMethod.GET)
     public ModelAndView editAnimal(@PathVariable("animalId") Integer animalId) throws Exception {
         ModelAndView response = new ModelAndView();

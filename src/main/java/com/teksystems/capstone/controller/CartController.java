@@ -9,6 +9,7 @@ import com.teksystems.capstone.formBean.ShoppingCartBean;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,7 @@ import java.util.Map;
 
 @Slf4j
 @Controller
+@PreAuthorize("hasAnyAuthority('USER','ADMIN')")
 public class CartController {
 
     // autowire all 3 dao - order, product, orderProduct
@@ -62,6 +64,7 @@ public class CartController {
 
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/cart/addProduct", method = RequestMethod.GET)
     public ModelAndView adminAddProduct() throws Exception {
         ModelAndView response = new ModelAndView();
@@ -87,6 +90,7 @@ public class CartController {
 
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/cart/addProductSubmit", method = {RequestMethod.POST, RequestMethod.GET})
     public ModelAndView registerAnimalSubmit(@Valid AddProductBean form, BindingResult bindingResult) throws Exception {
         ModelAndView response = new ModelAndView();

@@ -253,14 +253,15 @@
             </c:forEach>
 
             <%--Email--%>
-            <div class="text-center mt-4 stat">Email: </div>
             <c:if test="${not empty form.email}">
-                <div class="form-field d-flex align-items-center">
-                    <span class="far fa-email"></span>
-                    <input type="email" class="form-control" name="email" id="emailId" placeholder="Email" value="${form.email}" disabled>
-                </div>
+<%--                <div class="text-center mt-4 stat">Email: </div>--%>
+<%--                <div class="form-field d-flex align-items-center">--%>
+<%--                    <span class="far fa-email"></span>--%>
+<%--                    <input type="email" class="form-control" name="email" id="emailId" placeholder="Email" value="${form.email}" disabled>--%>
+<%--                </div>--%>
             </c:if>
             <c:if test="${empty form.email}">
+                <div class="text-center mt-4 stat">Email: </div>
                 <div class="form-field d-flex align-items-center">
                     <span class="far fa-email"></span>
                     <input type="email" class="form-control" name="email" id="emailId" placeholder="Email" value="${form.email}">
@@ -273,11 +274,20 @@
             </c:forEach>
 
             <%--Username--%>
-            <div class="text-center mt-4 stat">Username: </div>
-            <div class="form-field d-flex align-items-center">
-                <span class="far fa-username"></span>
-                <input type="text" class="form-control" name="username" id="usernameId" placeholder="Username" value="${form.username}">
-            </div>
+            <c:if test="${not empty form.username}">
+<%--                <div class="text-center mt-4 stat">Username: </div>--%>
+<%--                <div class="form-field d-flex align-items-center">--%>
+<%--                    <span class="far fa-username"></span>--%>
+<%--                    <input type="text" class="form-control" name="username" id="usernameId" placeholder="Username" value="${form.username}" disabled>--%>
+<%--                </div>--%>
+            </c:if>
+            <c:if test="${empty form.username}">
+                <div class="text-center mt-4 stat">Username: </div>
+                <div class="form-field d-flex align-items-center">
+                    <span class="far fa-username"></span>
+                    <input type="text" class="form-control" name="username" id="usernameId" placeholder="Username" value="${form.username}">
+                </div>
+            </c:if>
             <c:forEach items="${bindingResult.getFieldErrors('username')}" var="error">
                 <div style="color: red;">
                         ${error.getDefaultMessage()}
@@ -285,14 +295,15 @@
             </c:forEach>
 
             <%--password--%>
-            <div class="text-center mt-4 stat">Password: </div>
             <c:if test="${not empty form.password}">
-                <div class="form-field d-flex align-items-center">
-                    <span class="far fa-password"></span>
-                    <input type="password" class="form-control" name="password" id="passwordId" placeholder="Password" value="${form.password}" disabled>
-                </div>
+<%--                <div class="text-center mt-4 stat">Password: </div>--%>
+<%--                <div class="form-field d-flex align-items-center">--%>
+<%--                    <span class="far fa-password"></span>--%>
+<%--                    <input type="password" class="form-control" name="password" id="passwordId" placeholder="Password" value="${form.password}" disabled>--%>
+<%--                </div>--%>
             </c:if>
             <c:if test="${empty form.password}">
+                <div class="text-center mt-4 stat">Password: </div>
                 <div class="form-field d-flex align-items-center">
                     <span class="far fa-password"></span>
                     <input type="password" class="form-control" name="password" id="passwordId" placeholder="Password" value="${form.password}">
@@ -325,7 +336,7 @@
                 <div class="text-center mt-4 stat">Street Address: </div>
                 <div class="form-field d-flex align-items-center">
                     <span class="far fa-address"></span>
-                    <input type="text" id="addressId" name="text" placeholder="Address" value="${form.address}">
+                    <input type="text" id="addressId" name="address" placeholder="Address" value="${form.address}">
                 </div>
             </c:if>
 

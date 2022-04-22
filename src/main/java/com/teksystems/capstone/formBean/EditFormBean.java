@@ -15,19 +15,14 @@ import javax.validation.constraints.Pattern;
 @ToString
 public class EditFormBean {
 
-    // This id will be null in the case of a create
-    // and will be populated with the user id in the case of an edit
     private Integer id;
 
-    @NotBlank(message = "First name may not be empty.")
     private String firstName;
 
-    @NotBlank(message = "Last name may not be empty.")
     private String lastName;
 
     private String email;
 
-    @NotBlank(message = "Username may not be empty.")
     private String username;
 
     private String password;

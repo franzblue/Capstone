@@ -12,6 +12,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -30,6 +31,7 @@ import java.util.List;
 
 @Slf4j
 @Controller
+@PreAuthorize("hasAnyAuthority('USER','ADMIN')")
 public class UserController {
 
     @Autowired
@@ -58,6 +60,7 @@ public class UserController {
 
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/user/search")
     public ModelAndView search(@RequestParam(name = "searchId", required = false, defaultValue = "") String searchValue) {
         ModelAndView response = new ModelAndView();
@@ -176,10 +179,12 @@ public class UserController {
         user.setEmail(loggedInUser.getEmail());
         user.setId(loggedInUser.getId());
         user.setPassword(loggedInUser.getPassword());
+        user.setUsername(loggedInUser.getUsername());
 
         form.setEmail(loggedInUser.getEmail());
         form.setId(loggedInUser.getId());
         form.setPassword(loggedInUser.getPassword());
+        form.setUsername(loggedInUser.getUsername());
 
 
         if(form.getFirstName().equals(loggedInUser.getFirstName())) {
@@ -191,7 +196,7 @@ public class UserController {
         if(form.getLastName().equals(loggedInUser.getLastName())) {
             user.setLastName(loggedInUser.getLastName());
         } else {
-            user.setFirstName(form.getLastName());
+            user.setLastName(form.getLastName());
         }
 
         // changing loggedIn.username is tricky...

@@ -61,15 +61,15 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-3 col-lg-3 mb-3 mb-lg-3 wow fadeIn">
-            <div class="sidenav">
+            <div class="sidenav" style="border-radius: 25px">
                 <div class="well text-center">
-                    <a href="/../animal/table/dog">
+                    <a class="link-secondary"  href="/../animal/table/dog">
                         <img style="border-radius: 25px; border: 2px solid #606f7c;" src="../../../pub/images/dogs.jpeg" style="max-width: 100%; height: auto;">
                         <p>View all dogs here</p>
                     </a>
                 </div>
                 <div class="well text-center">
-                    <a href="/../animal/table/cat">
+                    <a class="link-secondary" href="/../animal/table/cat">
                         <img style="border-radius: 25px; border: 2px solid #606f7c;" src="../../../pub/images/cats.jpeg" style="max-width: 100%; height: auto;">
                         <p>View all cats here</p>
                     </a>
@@ -89,15 +89,15 @@
             </div>
         </div>
         <div class="col-md-3 col-lg-3 mb-3 mb-lg-3 wow fadeIn">
-            <div class="sidenav">
+            <div class="sidenav" style="border-radius: 25px">
                 <div class="well text-center">
-                    <a href="/login/register">
+                    <a class="link-secondary" href="/login/register">
                         <img style="border-radius: 25px; border: 2px solid #606f7c;" src="../../../pub/images/login.png" style="max-width: 100%; height: auto;">
-                        <p>New member? Register an account here!</p>
+                        <p>Create an account</p>
                     </a>
                 </div>
                 <div class="well text-center">
-                    <a href="/cart/shop">
+                    <a class="link-secondary" href="/cart/shop">
                         <img style="border-radius: 25px; border: 2px solid #606f7c;" src="../../../pub/images/supplies.png" style="max-width: 100%; height: auto;">
                         <p>Need some supplies? Shop here!</p>
                     </a>
