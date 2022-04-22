@@ -75,7 +75,7 @@
 
                        <!-- Product actions-->
                        <div class="input-group mb-3 card-footer p-4 pt-0 border-top-0 bg-transparent">
-                           <input type="number" placeholder="1" id="quantity${item.id}" min="1" onchange="changeValue('quantity${item.id}')" class="form-control">
+                           <input type="number" placeholder="0" id="quantity${item.id}" min="1" onchange="changeValue('quantity${item.id}')" class="form-control">
                            <div class="input-group-append">
                                <button class="btn btn-outline-dark mt-auto" onclick="addToCart(${item.id}, quantityValue)" type="button">Add to Cart</button>
                            </div>

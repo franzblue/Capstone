@@ -233,11 +233,11 @@ public class UserController {
             user.setTelephone(form.getTelephone());
         }
 
-//        if(form.getAddress().equals(loggedInUser.getAddress())) {
-//            user.setAddress(loggedInUser.getAddress());
-//        } else {
-//            user.setAddress(form.getAddress());
-//        }
+        if(form.getAddress().equals(loggedInUser.getAddress())) {
+            user.setAddress(loggedInUser.getAddress());
+        } else {
+            user.setAddress(form.getAddress());
+        }
 
         if(form.getBlurb().equals("")) {
             user.setBlurb(loggedInUser.getBlurb());

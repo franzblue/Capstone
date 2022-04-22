@@ -11,7 +11,7 @@
     <div class="container px-4 px-lg-5 mt-5">
 
         <c:if test="${empty cartItems[0].shoppingCart.user.username}">
-            <h1>$Your Cart Is Empty</h1>
+            <h1>Your Cart Is Empty</h1>
             <h2 id="totalDue">TOTAL AMOUNT DUE: </h2>
         </c:if>
         <c:if test="${not empty cartItems[0].shoppingCart.user.username}">

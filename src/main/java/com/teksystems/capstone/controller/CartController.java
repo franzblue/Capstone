@@ -174,7 +174,7 @@ public class CartController {
     @RequestMapping(value = "/cart/addToCart", method = RequestMethod.POST)
     public ModelAndView addToCart(@RequestParam(name = "productId") Integer productId, @RequestParam("quantityValue") Integer quantityValue) {
         ModelAndView response = new ModelAndView();
-        response.setViewName("cart/shop");
+        response.setViewName("redirect:/cart/shop");
         log.info("productId: ", productId);
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

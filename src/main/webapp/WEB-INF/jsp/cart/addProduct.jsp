@@ -20,7 +20,7 @@
 
     <input type="hidden" name="id" value="${form.id}">
 
-    <div class="form-group card-body">
+    <div class="form-group card-body" style="margin-bottom: 0px; padding-top: 0px;">
         <label for="nameId">Name: </label>
         <br>
         <input type="text" name="name" id="nameId" aria-describedby="nameHelp" placeholder="Enter name" value="${form.name}">
@@ -44,7 +44,7 @@
 <%--    </c:forEach>--%>
 <%--    <br>--%>
 
-    <div class="form-group card-body">
+    <div class="form-group card-body" style="margin-bottom: 0px; padding-top: 0px;">
         <label for="descriptionId">Description: </label>
         <br>
         <input type="text" name="description" id="descriptionId" aria-describedby="descriptionHelp" placeholder="Enter description" value="${form.description}">
@@ -56,7 +56,7 @@
         </div>
     </c:forEach>
 
-    <div class="form-group card-body">
+    <div class="form-group card-body" style="margin-bottom: 0px; padding-top: 0px;">
         <label for="priceId">Price: </label>
         <br>
         <input type="number" name="price" min="0" id="priceId" aria-describedby="ageHelp" placeholder="Enter price" value="${form.price}">
@@ -68,7 +68,7 @@
         </div>
     </c:forEach>
 
-    <div class="form-group card-body">
+    <div class="form-group card-body" style="margin-bottom: 0px; padding-top: 0px;">
         <label for="saleId">Sale Price: </label>
         <br>
         <input type="number" name="sale" min="0" id="saleId" aria-describedby="ageHelp" placeholder="Enter sale" value="${form.sale}">
@@ -80,7 +80,7 @@
         </div>
     </c:forEach>
 
-    <div class="form-group card-body">
+    <div class="form-group card-body" style="margin-bottom: 0px; padding-top: 0px;">
         <label for="imageId">Image: </label>
         <br>
         <input type="text" name="image" id="imageId" aria-describedby="sexHelp" placeholder="Enter image" value="${form.image}">

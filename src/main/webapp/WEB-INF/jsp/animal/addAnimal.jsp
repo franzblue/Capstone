@@ -17,9 +17,6 @@
 <%--    </form>--%>
 
 
-
-
-
 <div class="card" style="width: 25rem; margin: 0 auto; float: none; margin-bottom: 100px; background: #d7e4ef">
     <c:choose>
 
@@ -36,7 +33,7 @@
         <input type="hidden" name="id" value="${form.id}">
 
 
-        <div class="form-group card-body">
+        <div class="form-group card-body" style="margin-bottom: 0px; padding-top: 0px;">
             <label for="nameId">Name: </label>
             <br>
             <input type="text" name="name" id="nameId" aria-describedby="nameHelp" placeholder="Enter name" value="${form.name}">
@@ -48,7 +45,7 @@
         </div>
         </c:forEach>
 
-        <div class="form-group card-body">
+        <div class="form-group card-body" style="margin-bottom: 0px; padding-top: 0px;">
             <label for="nameId">Breed: </label>
             <br>
             <input type="text" name="breed" id="breedId" aria-describedby="breedHelp" placeholder="Enter breed" value="${form.breed}">
@@ -60,7 +57,7 @@
         </div>
         </c:forEach>
 
-        <div class="form-group card-body">
+        <div class="form-group card-body" style="margin-bottom: 0px; padding-top: 0px;">
             <label for="descriptionId">Description: </label>
             <br>
             <input type="text" name="description" id="descriptionId" aria-describedby="descriptionHelp" placeholder="Enter description" value="${form.description}">
@@ -72,7 +69,7 @@
         </div>
         </c:forEach>
 
-        <div class="form-group card-body">
+        <div class="form-group card-body" style="margin-bottom: 0px; padding-top: 0px;">
             <label for="ageId">Age: </label>
             <br>
             <input type="number" name="age" min="0" id="ageId" aria-describedby="ageHelp" placeholder="Enter age" value="${form.age}">
@@ -84,7 +81,7 @@
         </div>
         </c:forEach>
 
-        <div class="form-group card-body">
+        <div class="form-group card-body" style="margin-bottom: 0px; padding-top: 0px;">
             <label for="imageId">Image: </label>
             <br>
             <input type="text" name="image" id="imageId" aria-describedby="sexHelp" placeholder="Enter image" value="${form.image}">
@@ -96,7 +93,7 @@
         </div>
         </c:forEach>
 
-        <div class="input-group mb-3 card-body">
+        <div class="input-group mb-3 card-body" style="margin-bottom: 0px; padding-top: 0px;">
             <div class="input-group-prepend">
                 <label class="input-group-text" for="sexId">Sex </label>
             </div>
@@ -112,7 +109,7 @@
             </c:forEach>
         </div>
 
-        <div class="input-group mb-3 card-body">
+        <div class="input-group mb-3 card-body" style="margin-bottom: 0px; padding-top: 0px;">
             <div class="input-group-prepend">
                 <label class="input-group-text" for="speciesId">Species</label>
             </div>
