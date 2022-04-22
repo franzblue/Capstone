@@ -57,57 +57,55 @@
         </div>
     </div>
 </div>
+<hr>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-3 col-lg-3 mb-3 mb-lg-3 wow fadeIn">
+            <div class="sidenav">
+                <div class="well text-center">
+                    <a href="/../animal/table/dog">
+                        <img style="border-radius: 25px; border: 2px solid #606f7c;" src="../../../pub/images/dogs.jpeg" style="max-width: 100%; height: auto;">
+                        <p>View all dogs here</p>
+                    </a>
+                </div>
+                <div class="well text-center">
+                    <a href="/../animal/table/cat">
+                        <img style="border-radius: 25px; border: 2px solid #606f7c;" src="../../../pub/images/cats.jpeg" style="max-width: 100%; height: auto;">
+                        <p>View all cats here</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="text-left">
+                <h1>Welcome</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <hr>
+                <div class="row">
 
-<div class="container-fluid text-center" style="margin-bottom: 100px">
-    <div class="row content">
-        <div class="col-sm-2 sidenav">
-            <a href="/../animal/table/dog">
-                <img src="../../../pub/images/placeholder.png" style="max-width: 100%; height: auto;">
-                <p>View all dogs here</p>
-            </a>
-            <a href="/../animal/table/cat">
-                <img src="../../../pub/images/placeholder.png" style="max-width: 100%; height: auto;">
-                <p>View all cats here</p>
-            </a>
-        </div>
-        <div class="col-sm-8 text-left">
-            <h1>Welcome</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <hr>
-            <div class="row">
-                <div class="col-6">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
                 </div>
-            <form action="/login/loginSubmit" method="POST" class="col-6">
-                <div class="form-group">
-                    <h3>Sign In Here</h3>
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username" placeholder="Enter email">
-<%--                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>--%>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
             </div>
         </div>
-        <div class="col-sm-2 sidenav">
-            <div class="well">
-                <a href="/login/register">
-                    <img src="../../../pub/images/placeholder.png" style="max-width: 100%; height: auto;">
-                    <p>New member? Register an account here!</p>
-                </a>
-            </div>
-            <div class="well">
-                <a href="/cart/shop">
-                    <img src="../../../pub/images/placeholder.png" style="max-width: 100%; height: auto;">
-                    <p>Need some supplies? Shop here!</p>
-                </a>
+        <div class="col-md-3 col-lg-3 mb-3 mb-lg-3 wow fadeIn">
+            <div class="sidenav">
+                <div class="well text-center">
+                    <a href="/login/register">
+                        <img style="border-radius: 25px; border: 2px solid #606f7c;" src="../../../pub/images/login.png" style="max-width: 100%; height: auto;">
+                        <p>New member? Register an account here!</p>
+                    </a>
+                </div>
+                <div class="well text-center">
+                    <a href="/cart/shop">
+                        <img style="border-radius: 25px; border: 2px solid #606f7c;" src="../../../pub/images/supplies.png" style="max-width: 100%; height: auto;">
+                        <p>Need some supplies? Shop here!</p>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
 
 <jsp:include page="include/footer.jsp"/>
