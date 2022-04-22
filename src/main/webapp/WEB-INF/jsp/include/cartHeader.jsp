@@ -127,6 +127,7 @@
                         <li><a class="dropdown-item" href="/../animal/table/small">Small Animals</a></li>
                     </ul>
                 </li>
+                <li class="nav-item"><a class="nav-link" href="/login/logout">Logout</a></li>
             </ul>
             <form action="/cart/checkout" method="POST" class="d-flex">
                 <button class="btn btn-outline-dark" type="submit">

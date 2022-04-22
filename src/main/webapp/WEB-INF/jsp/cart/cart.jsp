@@ -63,9 +63,18 @@
 
             <button class="btn btn-outline-danger mt-auto" onclick="removeFromCart(${item.id})" type="button">Remove From Cart</button>
 
-        <div class="card-footer">
-            <small class="text-muted">Item Total: $${item.quantity * item.product.price}.00</small>
-        </div>
+            <c:choose>
+                <c:when test="${item.product.sale == 0}">
+                    <div class="card-footer">
+                        <small class="text-muted">Item Total: $${item.quantity * item.product.price}.00</small>
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <div class="card-footer">
+                        <small class="text-muted">Item Total: $${item.quantity * item.product.sale}.00</small>
+                    </div>
+                </c:otherwise>
+            </c:choose>
     </div>
     </div>
 
