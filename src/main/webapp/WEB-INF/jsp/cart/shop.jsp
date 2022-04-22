@@ -60,20 +60,21 @@
                        <img class="card-img-top" src="${item.image}" alt="..." />
                        <!-- Product details-->
                        <div class="card-body p-4">
-                           <div class="text-center">
+
                                <!-- Product name-->
                                <h5 class="fw-bolder">${item.name}</h5>
-                               <!-- Product name-->
-                               <h6 class="fw-bolder">${item.description}</h6>
+
                                <!-- Product price-->
                                <c:if test="${item.sale > 0}">
-                                   <span class="text-muted text-decoration-line-through">${item.price}.00</span>
-                                   ${item.sale}.00
+                                   <span class="text-muted text-decoration-line-through">$${item.price}.00</span>
+                                   <h6 class="fw-bolder">$${item.sale}.00</h6>
                                </c:if>
                                 <c:if test="${item.sale == 0}">
-                                    ${item.price}.00
+                                    <h6 class="fw-bolder">$${item.price}.00</h6>
                                 </c:if>
-                           </div>
+                               <!-- Product description-->
+                               <p class="card-text">${item.description}</p>
+
                        </div>
 
                        <!-- Product actions-->
