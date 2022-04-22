@@ -18,7 +18,7 @@
 
 
 
-<body>
+<body onload="showCart()">
 <%--<ul class="nav justify-content-end">--%>
 
 <%--    <li class="nav-item">--%>
@@ -66,22 +66,24 @@
 <%--    <a href="/user/register">Sign Up</a> |--%>
 <%--    <a href="/user/search">Search</a>--%>
 
-<%--<script>--%>
-<%--    function showCart(selectObject) {--%>
-<%--        $.ajax({--%>
-<%--            type: "GET",--%>
-<%--            url: "/cart/showCart",--%>
-<%--            success: function (response) {--%>
-<%--                console.log("test")--%>
-<%--                $("cartId").html(69);--%>
-<%--            },--%>
-<%--            error: function (result) {--%>
-<%--                // do something.--%>
-<%--                console.log("cart header ?");--%>
-<%--            }--%>
-<%--        });--%>
-<%--    }--%>
-<%--</script>--%>
+<script>
+    function showCart() {
+        $.ajax({
+            type: "GET",
+            url: "/cart/showCart",
+            success: function (response) {
+                console.log("test" + response)
+                // $("cartId").html(5);
+                var s = document.getElementById("cartId");
+                s.innerHTML = response;
+            },
+            error: function (result) {
+                // do something.
+                console.log("cart header ?");
+            }
+        });
+    }
+</script>
 
 
 <!-- Navigation-->
@@ -140,7 +142,7 @@
                 <button class="btn btn-outline-dark" type="submit">
                     <i class="bi-cart-fill me-1"></i>
                     My Cart
-                    <span id="cartId" class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                    <span id="cartId" class="badge bg-dark text-white ms-1 rounded-pill"></span>
                 </button>
             </form>
         </div>

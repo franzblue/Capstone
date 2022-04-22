@@ -150,31 +150,36 @@ public class CartController {
         return response;
     }
 
-//
-//
-//    @RequestMapping(value = "/cart/showCart", method = RequestMethod.GET)
-//    public ModelAndView showCart() throws Exception {
+
+
+    @RequestMapping(value = "/cart/showCart", method = RequestMethod.GET)
+    @ResponseBody
+    public Integer showCart() throws Exception {
 //        ModelAndView response = new ModelAndView();
 //        response.setViewName("cart/shop");
-//
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        String currentPrincipleName = authentication.getName();
-//        User loggedInUser = userDao.findUserByUsername(currentPrincipleName);
-//
-//        Order products = orderDao.findById(loggedInUser.getId());
-//
-//        response.addObject("products", products);
-//
-//        log.info("products: " + products);
-//
-//        return response;
-//
-//    }
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipleName = authentication.getName();
+        User loggedInUser = userDao.findUserByUsername(currentPrincipleName);
+
+        log.info("items:", cartItemDao.cartCount(1));
+
+        Integer products = cartItemDao.cartCount(loggedInUser.getId());
+
+        if(products == null) {
+            return 0;
+        } else {
+            return products;
+        }
+
+
+
+    }
 
     @RequestMapping(value = "/cart/addToCart", method = RequestMethod.POST)
     public ModelAndView addToCart(@RequestParam(name = "productId") Integer productId, @RequestParam("quantityValue") Integer quantityValue) {
         ModelAndView response = new ModelAndView();
-        response.setViewName("redirect:/cart/shop");
+        response.setViewName("cart/shop");
         log.info("productId: ", productId);
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

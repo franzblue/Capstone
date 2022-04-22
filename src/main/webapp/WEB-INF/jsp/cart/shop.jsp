@@ -30,6 +30,9 @@
                 console.log("product ?");
             }
         });
+        $(document).ajaxStop(function(){
+            window.location.reload();
+        });
     }
 </script>
 
