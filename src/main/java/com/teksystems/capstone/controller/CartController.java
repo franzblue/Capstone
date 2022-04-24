@@ -7,6 +7,7 @@ import com.teksystems.capstone.formBean.AnimalTableBean;
 import com.teksystems.capstone.formBean.RegisterFormBean;
 import com.teksystems.capstone.formBean.ShoppingCartBean;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -17,10 +18,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import javax.websocket.server.PathParam;
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
@@ -92,7 +95,7 @@ public class CartController {
 
     @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/cart/addProductSubmit", method = {RequestMethod.POST, RequestMethod.GET})
-    public ModelAndView registerAnimalSubmit(@Valid AddProductBean form, BindingResult bindingResult) throws Exception {
+    public ModelAndView addToProduct(@RequestParam("file") MultipartFile file, @Valid AddProductBean form, BindingResult bindingResult) throws Exception {
         ModelAndView response = new ModelAndView();
 
         log.info(form.toString());
@@ -111,14 +114,21 @@ public class CartController {
         }
 
         Product product = productDao.findProductById(form.getId());
-
         if (product == null) {
             product = new Product();
         }
 
+        if(file.getOriginalFilename().isBlank()) {
+            product.setImage("../../../pub/images/placeholder.png");
+        } else {
+            File targetFile = new File("/Users/franzblue/Desktop/Capstone/src/main/webapp/pub/images/" + file.getOriginalFilename());
+            FileUtils.copyInputStreamToFile(file.getInputStream(), targetFile);
+            product.setImage("../../../pub/images/" + file.getOriginalFilename());
+        }
+
+
         product.setName(form.getName());
         product.setDescription(form.getDescription());
-        product.setImage(form.getImage());
         product.setPrice(form.getPrice());
         product.setSale(form.getSale());
 

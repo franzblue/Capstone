@@ -25,7 +25,6 @@ public class Product {
     private Integer id;
 
     @Column(name = "name", nullable = false, unique = true)
-    @Length(min = 5, message = "Name must have at least 5 characters")
     private String name;
 
     @Column(name = "description")

@@ -34,7 +34,6 @@ public class AnimalTableBean {
     @NotBlank(message = "Sex may not be empty.")
     private String sex;
 
-    @NotBlank(message = "Image may not be empty.")
     private String image;
 }
 

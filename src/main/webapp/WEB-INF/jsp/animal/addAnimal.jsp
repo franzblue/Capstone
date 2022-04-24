@@ -29,7 +29,7 @@
         </c:when>
 
     </c:choose>
-    <form action="/animal/addAnimalSubmit" method="post">
+    <form action="/animal/addAnimalSubmit" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id" value="${form.id}">
 
 
@@ -84,7 +84,7 @@
         <div class="form-group card-body" style="margin-bottom: 0px; padding-top: 0px;">
             <label for="imageId">Image: </label>
             <br>
-            <input type="text" name="image" id="imageId" aria-describedby="sexHelp" placeholder="Enter image" value="${form.image}">
+            <input id="imageId" type="file" name="file">
             <small id="imageHelp" class="form-text text-muted">Please enter the image</small>
         </div>
         <c:forEach items="${bindingResult.getFieldErrors('image')}" var="error">

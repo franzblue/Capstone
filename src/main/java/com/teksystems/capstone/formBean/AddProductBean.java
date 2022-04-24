@@ -21,13 +21,13 @@ public class AddProductBean {
     @NotBlank(message = "Description may not be empty.")
     private String description;
 
-    @NotBlank(message = "Image may not be empty.")
     private String image;
 
     @NotNull(message= "Price is required.")
     @Min(value=0, message="Positive price required.")
     private Integer price;
 
+    @NotNull(message= "Price is required.")
     @Min(value=0, message="Positive price required.")
     private Integer sale;
 
