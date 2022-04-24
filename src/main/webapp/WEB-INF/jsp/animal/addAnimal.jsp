@@ -98,7 +98,6 @@
                 <label class="input-group-text" for="sexId">Sex </label>
             </div>
             <select class="custom-select" name="sex" id="sexId" value="${form.sex}">
-                <option selected>Choose...</option>
                 <option value="Female">Female</option>
                 <option value="Male">Male</option>
             </select>
@@ -114,7 +113,6 @@
                 <label class="input-group-text" for="speciesId">Species</label>
             </div>
             <select class="custom-select" name="species" id="speciesId" value="${form.species}">
-                <option selected>Choose...</option>
                 <option value="dog">Dog</option>
                 <option value="cat">Cat</option>
                 <option value="small">Other</option>

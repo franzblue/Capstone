@@ -335,6 +335,28 @@ public class CartController {
 
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @RequestMapping(value = "/cart/editProduct/{productId}", method = RequestMethod.GET)
+    public ModelAndView editProduct(@PathVariable("productId") Integer productId) throws Exception {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("cart/addProduct");
+
+        Product product = productDao.findProductById(productId);
+
+        AddProductBean form = new AddProductBean();
+
+        form.setId(product.getId());
+        form.setName(product.getName());
+        form.setDescription(product.getDescription());
+        form.setImage(product.getImage());
+        form.setPrice(product.getPrice());
+        form.setSale(product.getSale());
+
+        response.addObject("form", form);
+
+        return response;
+    }
+
 
 
 }

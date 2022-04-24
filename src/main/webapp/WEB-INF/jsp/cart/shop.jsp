@@ -107,6 +107,11 @@
                            <div class=" text-center mb-2">
                                <button class="btn btn-outline-danger mt-auto" onclick="deleteProduct(${item.id})" type="button">DELETE PRODUCT</button>
                            </div>
+                           <div class=" text-center m-2">
+                               <form action="/cart/editProduct/${item.id}">
+                                   <button class="btn btn-outline-secondary mt-auto" type="submit">EDIT PRODUCT</button>
+                               </form>
+                           </div>
                        </sec:authorize>
 
                    </div>

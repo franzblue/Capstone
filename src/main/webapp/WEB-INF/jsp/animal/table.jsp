@@ -75,6 +75,22 @@
             window.location.reload();
         });
     }
+    function editAnimal(animalId) {
+        $.ajax({
+            type: "GET",
+            url: "/animal/editAnimal/{animalId}",
+            data: {"animalId" : animalId},
+            success: function (response) {
+            },
+            error: function (result) {
+                // do something.
+                console.log("delete ?");
+            }
+        });
+        $(document).ajaxStop(function(){
+            window.location.reload();
+        });
+    }
 </script>
 <!-- Header-->
 <header class="bg-dark py-5">
@@ -136,6 +152,11 @@
                                 <sec:authorize access="hasAuthority('ADMIN')">
                                     <div class=" text-center m-2">
                                         <button class="btn btn-outline-danger mt-auto" onclick="deleteAnimal(${item.id})" type="button">DELETE ANIMAL</button>
+                                    </div>
+                                    <div class=" text-center m-2">
+                                        <form action="/animal/editAnimal/${item.id}">
+                                            <button class="btn btn-outline-secondary mt-auto" type="submit">EDIT ANIMAL</button>
+                                        </form>
                                     </div>
                                 </sec:authorize>
                                 <small class="text-muted">Last updated 3 mins ago</small>

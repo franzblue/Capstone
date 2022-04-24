@@ -27,7 +27,7 @@ public class AddProductBean {
     @Min(value=0, message="Positive price required.")
     private Integer price;
 
-    @NotNull(message= "Price is required.")
+    @NotNull(message= "Price is required - If product is not on sale enter 0.")
     @Min(value=0, message="Positive price required.")
     private Integer sale;
 
