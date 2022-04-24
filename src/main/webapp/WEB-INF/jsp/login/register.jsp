@@ -220,12 +220,12 @@
     <c:choose>
         <c:when test = "${empty form.id}">
             <div class="text-center mt-4 name">Sign Up</div>
-            <form class="p-3 mt-3" action="/login/registerSubmit" method="post">
+            <form class="p-0 mt-0" action="/login/registerSubmit" method="post">
         </c:when>
 
         <c:when test = "${not empty form.id}">
             <div class="text-center mt-4 name">Edit User</div>
-            <form class="p-3 mt-3" action="/user/editSubmit/${form.id}" method="post">
+            <form class="p-0 mt-0" action="/user/editSubmit/${form.id}" method="post">
         </c:when>
     </c:choose>
             <br>
@@ -234,7 +234,7 @@
             <input type="hidden" name="id" value="${form.id}">
 
             <%--FirstName--%>
-        <div class="text-center mt-4 stat">First Name: </div>
+        <div class="text-center mt-0 stat">First Name: </div>
             <div class="form-field d-flex align-items-center">
                 <span class="far fa-firstname"></span>
                 <input type="text" class="form-control" name="firstName" id="firstNameId" placeholder="First Name" value="${form.firstName}">

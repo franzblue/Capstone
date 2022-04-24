@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <jsp:include page="../include/header.jsp"/>
 
@@ -56,6 +57,22 @@
                 // do something.
                 console.log("age ?");
             }
+        });
+    }
+    function deleteAnimal(animalId) {
+        $.ajax({
+            type: "GET",
+            url: "/animal/deleteAnimal/",
+            data: {"animalId" : animalId},
+            success: function (response) {
+            },
+            error: function (result) {
+                // do something.
+                console.log("delete ?");
+            }
+        });
+        $(document).ajaxStop(function(){
+            window.location.reload();
         });
     }
 </script>
@@ -115,8 +132,15 @@
                             <!-- Learn More -->
                             <a href="/../animal/card/${item.id}" class="btn btn-outline-primary mt-auto">Learn more about ${item.name}</a>
                             <div class="card-footer">
+
+                                <sec:authorize access="hasAuthority('ADMIN')">
+                                    <div class=" text-center m-2">
+                                        <button class="btn btn-outline-danger mt-auto" onclick="deleteAnimal(${item.id})" type="button">DELETE ANIMAL</button>
+                                    </div>
+                                </sec:authorize>
                                 <small class="text-muted">Last updated 3 mins ago</small>
                             </div>
+
 
                         </div>
                     </div>

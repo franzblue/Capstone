@@ -3,6 +3,7 @@ package com.teksystems.capstone.controller;
 
 import com.teksystems.capstone.database.dao.AnimalDAO;
 import com.teksystems.capstone.database.entity.Animal;
+import com.teksystems.capstone.database.entity.Product;
 import com.teksystems.capstone.database.entity.User;
 import com.teksystems.capstone.formBean.AnimalTableBean;
 import com.teksystems.capstone.formBean.RegisterFormBean;
@@ -241,6 +242,17 @@ public class AnimalController {
         response.addObject("form", form);
 
         return response;
+    }
+
+
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @GetMapping("/animal/deleteAnimal")
+    public void deleteAnimal(@RequestParam(name = "animalId") Integer animalId) {
+
+        Animal animal = animalDao.findAnimalById(animalId);
+
+        animalDao.delete(animal);
+
     }
 
 }

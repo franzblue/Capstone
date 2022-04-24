@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <jsp:include page="../include/header.jsp"/>
 
@@ -7,6 +8,23 @@
     function changeValue(quantity) {
         quantityValue = document.getElementById(quantity).value;
         console.log(quantityValue, quantity);
+    }
+
+    function deleteProduct(productId) {
+        $.ajax({
+            type: "GET",
+            url: "/cart/deleteProduct/",
+            data: {"productId" : productId},
+            success: function (response) {
+            },
+            error: function (result) {
+                // do something.
+                console.log("delete ?");
+            }
+        });
+        $(document).ajaxStop(function(){
+            window.location.reload();
+        });
     }
 
     function addToCart(productId, quantityValue) {
@@ -84,6 +102,12 @@
                                <button class="btn btn-outline-dark mt-auto" onclick="addToCart(${item.id}, quantityValue)" type="button">Add to Cart</button>
                            </div>
                        </div>
+
+                       <sec:authorize access="hasAuthority('ADMIN')">
+                           <div class=" text-center mb-2">
+                               <button class="btn btn-outline-danger mt-auto" onclick="deleteProduct(${item.id})" type="button">DELETE PRODUCT</button>
+                           </div>
+                       </sec:authorize>
 
                    </div>
                </div>

@@ -180,7 +180,7 @@
             <td>${user.username}</td>
             <td>${user.telephone}</td>
             <td>${user.address}</td>
-            <td class="text-center"><form action="/user/delete/${user.id}"><button>DELETE</button></form></td>
+            <td class="text-center"><form action="/user/delete/${user.id}"><button style="background: #fd5656;">DELETE</button></form></td>
         </tr>
     </c:forEach>
 </table>

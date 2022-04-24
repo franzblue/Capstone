@@ -325,6 +325,17 @@ public class CartController {
     }
 
 
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @GetMapping("/cart/deleteProduct")
+    public void deleteProduct(@RequestParam(name = "productId") Integer productId) {
+
+        Product product = productDao.findProductById(productId);
+
+        productDao.delete(product);
+
+    }
+
+
 
 }
 
