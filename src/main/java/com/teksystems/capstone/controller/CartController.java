@@ -33,16 +33,11 @@ import java.util.Map;
 public class CartController {
 
     // autowire all 3 dao - order, product, orderProduct
-    @Autowired
-    private OrderDAO orderDao;
 
     // order has 2 status .... pending or completed
 
     @Autowired
     private ProductDAO productDao;
-
-    @Autowired
-    private OrderProductDAO orderProductDao;
 
     @Autowired
     private UserDAO userDao;
@@ -202,7 +197,6 @@ public class CartController {
 
         Product product = productDao.findProductById(productId);
 
-//        Order order = orderDao.findById(loggedInUser.getId());
 
         ShoppingCart shoppingCart = shoppingCartDao.findByUser(loggedInUser);
 
@@ -281,15 +275,15 @@ public class CartController {
         //
 
         // pretend that we looked up the order in the database using the userid and an order status
-        Order order = new Order();
+//        Order order = new Order();
 
         // if order does not exist create it  and save it
 
 
         // here actually want to make the new OrderProduct entity
-        OrderProduct orderProduct = new OrderProduct();
-        orderProduct.setProduct(product);
-        orderProduct.setOrder(order);
+//        OrderProduct orderProduct = new OrderProduct();
+//        orderProduct.setProduct(product);
+//        orderProduct.setOrder(order);
 
         // save this using the dao
 

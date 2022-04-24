@@ -61,9 +61,5 @@ public class User {
 
     @Column(name = "role")
     private String role;
-//
-//    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-//    private Set<Order> orders;
-
 
 }

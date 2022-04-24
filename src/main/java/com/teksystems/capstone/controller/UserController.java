@@ -142,10 +142,6 @@ public class UserController {
         return response;
     }
 
-
-
-
-
     @RequestMapping(value = "/user/editSubmit/{userId}", method = RequestMethod.POST)
     public ModelAndView editUserSubmit(@Valid EditFormBean form, BindingResult bindingResult) throws Exception {
         ModelAndView response = new ModelAndView();
@@ -309,6 +305,7 @@ public class UserController {
         return response;
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/user/sortId")
     public ModelAndView sortById() {
         ModelAndView response = new ModelAndView();
@@ -323,6 +320,7 @@ public class UserController {
         return response;
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/user/sortRole")
     public ModelAndView sortByRole() {
         ModelAndView response = new ModelAndView();
@@ -337,6 +335,7 @@ public class UserController {
         return response;
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/user/sortEmail")
     public ModelAndView sortByEmail() {
         ModelAndView response = new ModelAndView();
@@ -351,6 +350,7 @@ public class UserController {
         return response;
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/user/sortFirst")
     public ModelAndView sortByFirst() {
         ModelAndView response = new ModelAndView();
@@ -365,6 +365,7 @@ public class UserController {
         return response;
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/user/sortLast")
     public ModelAndView sortByLast() {
         ModelAndView response = new ModelAndView();
@@ -379,6 +380,7 @@ public class UserController {
         return response;
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/user/sortUsername")
     public ModelAndView sortByUsername() {
         ModelAndView response = new ModelAndView();
@@ -393,6 +395,7 @@ public class UserController {
         return response;
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/user/sortTelephone")
     public ModelAndView sortByTelephone() {
         ModelAndView response = new ModelAndView();
@@ -407,6 +410,7 @@ public class UserController {
         return response;
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/user/sortAddress")
     public ModelAndView sortByAddress() {
         ModelAndView response = new ModelAndView();
@@ -421,4 +425,29 @@ public class UserController {
         return response;
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @GetMapping("/user/delete/{userId}")
+    public ModelAndView deleteUser(@PathVariable("userId") Integer userId) {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("user/search");
+        User user = userDao.findById(userId);
+
+//        user.setFirstName(null);
+//        user.setLastName(null);
+//        user.setEmail(null);
+//        user.setUsername(null);
+//        user.setPassword(null);
+//        user.setDogLove(null);
+//        user.setCatLove(null);
+//        user.setSmallLove(null);
+//        user.setImage(null);
+//        user.setTelephone(null);
+//        user.setAddress(null);
+//        user.setDescription(null);
+//        user.setBlurb(null);
+//        user.setRole(null);
+
+        userDao.delete(user);
+        return response;
+    }
 }

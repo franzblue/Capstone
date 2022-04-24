@@ -109,7 +109,6 @@
                 </sec:authorize>
 
 
-                <li class="nav-item"><a class="nav-link" href="/../home">Home</a></li>
 
                 <sec:authorize access="!isAuthenticated()">
                     | <a href="/login/login">Log In</a>

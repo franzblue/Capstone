@@ -160,6 +160,7 @@
         <th onclick="sortByUsername()">Username</th>
         <th onclick="sortByTelephone()">Telephone</th>
         <th onclick="sortByAddress()">Address</th>
+        <th>DELETE USER</th>
     </tr>
 
     <c:forEach items="${users}" var="user">
@@ -179,6 +180,7 @@
             <td>${user.username}</td>
             <td>${user.telephone}</td>
             <td>${user.address}</td>
+            <td class="text-center"><form action="/user/delete/${user.id}"><button>DELETE</button></form></td>
         </tr>
     </c:forEach>
 </table>

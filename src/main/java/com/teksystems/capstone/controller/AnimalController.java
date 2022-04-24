@@ -155,14 +155,6 @@ public class AnimalController {
         return response;
     }
 
-    @GetMapping("/animal/how")
-    public ModelAndView how() {
-        ModelAndView response = new ModelAndView();
-        response.setViewName("animal/how");
-
-        return response;
-    }
-
     @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/animal/addAnimal", method = RequestMethod.GET)
     public ModelAndView create() throws Exception {
