@@ -70,7 +70,7 @@
                 </div>
                 <div class="well text-center">
                     <a class="link-secondary" href="/../animal/table/cat">
-                        <img style="border-radius: 25px; border: 2px solid #606f7c;" src="../../../pub/images/cats.jpeg" style="max-width: 100%; height: auto;">
+                        <img style="border-radius: 25px; border: 2px solid #606f7c;" src="../../../pub/images/catInTree.jpeg" style="max-width: 100%; height: auto;">
                         <p>View all cats here</p>
                     </a>
                 </div>
