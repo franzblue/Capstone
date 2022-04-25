@@ -76,7 +76,9 @@
                                 <label for="exampleInputPassword1">Password</label>
                                 <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password">
                             </div>
+                            <div class="text-center">
                             <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
                         </form>
                     </sec:authorize>
                     <div class="col-3"></div>
