@@ -1,9 +1,5 @@
 <jsp:include page="../include/header.jsp"/>
 
-
-
-
-
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
                 <div class="col mb-5">
@@ -31,6 +27,5 @@
         </div>
     </div>
 </section>
-
 
 <jsp:include page="../include/footer.jsp"/>

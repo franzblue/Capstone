@@ -4,12 +4,6 @@
 
 <jsp:include page="../include/header.jsp"/>
 
-<%--<nav aria-label="breadcrumb">--%>
-<%--    <ol class="breadcrumb">--%>
-<%--        <li class="breadcrumb-item"><a href="/animal/table/${animals[0].species}">Adoptable Animals</a></li>--%>
-<%--        <li class="breadcrumb-item active" aria-current="page">${animals[0].species}s</li>--%>
-<%--    </ol>--%>
-<%--</nav>--%>
 <script>
     function getSpecies(selectObject) {
         var value = selectObject.value;
@@ -141,7 +135,7 @@
                                 <p class="card-text">${item.breed}</p>
                                 <!-- Animal Age-->
                                 <p class="card-text">Age:
-                                    <fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${item.age / 12}"/>
+                                    <fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="0" value="${item.age / 12}"/>
                                     years old</p>
                             </div>
 
@@ -159,10 +153,8 @@
                                         </form>
                                     </div>
                                 </sec:authorize>
-                                <small class="text-muted">Last updated 3 mins ago</small>
+<%--                                <small class="text-muted">Last updated 3 mins ago</small>--%>
                             </div>
-
-
                         </div>
                     </div>
                 </c:forEach>
@@ -171,84 +163,3 @@
     </section>
 
 <jsp:include page="../include/footer.jsp"/>
-
-
-
-<%--    <div class="container">--%>
-<%--        <div class="row card-deck">--%>
-<%--            <c:forEach items="${animals}" var="item" varStatus="status">--%>
-
-<%--                &lt;%&ndash;    <p>${status.begin.toString()}</p>&ndash;%&gt;--%>
-
-<%--                &lt;%&ndash;    Id: ${item.id}<br>&ndash;%&gt;--%>
-<%--                &lt;%&ndash;    Name: ${item.name}<br>&ndash;%&gt;--%>
-<%--                &lt;%&ndash;    Species: ${item.species}<br>&ndash;%&gt;--%>
-<%--                &lt;%&ndash;    Breed: ${item.breed}<br>&ndash;%&gt;--%>
-<%--                &lt;%&ndash;    Description: ${item.description}<br>&ndash;%&gt;--%>
-<%--                &lt;%&ndash;    Age: ${item.age} years old<br>&ndash;%&gt;--%>
-<%--                &lt;%&ndash;    Sex: ${item.sex}<br>&ndash;%&gt;--%>
-<%--                &lt;%&ndash;    Image: ${item.img}<br>&ndash;%&gt;--%>
-<%--                &lt;%&ndash;    <br>&ndash;%&gt;--%>
-<%--                &lt;%&ndash;    <hr>&ndash;%&gt;--%>
-
-<%--                <div class="col-sm-4" style="border: solid #555555">--%>
-<%--                    <div id="carouselExampleIndicators${item.id}" class="carousel carousel-dark slide" data-interval="false">--%>
-<%--                        <ol class="carousel-indicators">--%>
-<%--                            <li data-target="#carouselExampleIndicators${item.id}" data-slide-to="0" class="active"></li>--%>
-<%--                            <li data-target="#carouselExampleIndicators${item.id}" data-slide-to="1"></li>--%>
-<%--                            <li data-target="#carouselExampleIndicators${item.id}" data-slide-to="2"></li>--%>
-<%--                        </ol>--%>
-<%--                        <div class="carousel-inner">--%>
-<%--                            <div class="carousel-item active">--%>
-<%--                                <img class="d-block w-100" src="${item.image}" alt="First slide">--%>
-<%--                            </div>--%>
-<%--                            <div class="carousel-item">--%>
-<%--                                <img class="d-block w-100" src="/../../../pub/images/smallpup.jpeg" alt="Second slide">--%>
-<%--                            </div>--%>
-<%--                            <div class="carousel-item">--%>
-<%--                                <img class="d-block w-100" src="/../../../pub/images/smartdog.jpeg" alt="Third slide">--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                        <a class="carousel-control-prev" href="#carouselExampleIndicators${item.id}" role="button" data-slide="prev">--%>
-<%--                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>--%>
-<%--                            <span class="sr-only">Previous</span>--%>
-<%--                        </a>--%>
-<%--                        <a class="carousel-control-next" href="#carouselExampleIndicators${item.id}" role="button" data-slide="next">--%>
-<%--                            <span class="carousel-control-next-icon" aria-hidden="true"></span>--%>
-<%--                            <span class="sr-only">Next</span>--%>
-<%--                        </a>--%>
-<%--                    </div>--%>
-<%--                    <div class="text-center">--%>
-<%--                        <br>--%>
-<%--                        <b>< MORE TEXT HERE > </b>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--                <div class="card col-sm-4">--%>
-<%--                    <img class="card-img-top" src="${item.image}" alt="Card image cap">--%>
-<%--                    <div class="card-body">--%>
-<%--                        <h5 class="card-title">Name: ${item.name}</h5>--%>
-<%--                        <p class="card-text">Age:--%>
-<%--                            <fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${item.age / 12}"/>--%>
-<%--                            years old</p>--%>
-<%--                    </div>--%>
-<%--                    <a href="/../animal/card/${item.id}" class="btn btn-primary">Learn more about ${item.name}</a>--%>
-<%--                    <div class="card-footer">--%>
-<%--                        <small class="text-muted">Last updated 3 mins ago</small>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--                <div class="col-sm-4" style="border: solid #555555">--%>
-<%--                    <br>--%>
-<%--                    <h3 class="card-text">Sex: ${item.sex}</h3>--%>
-<%--                    <h3 class="card-text">Species: ${item.species}</h3>--%>
-<%--                    <h3 class="card-text">Breed: ${item.breed}</h3>--%>
-<%--                    <h5 class="card-text">Description: </h5><b>${item.description}</b>--%>
-<%--                </div>--%>
-
-<%--                <hr>--%>
-
-
-<%--            </c:forEach>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</div>--%>
-

@@ -6,8 +6,6 @@
     <title>All Paws On Deck!</title>
 </head>
 <style>
-
-
     * {
         margin: 0;
         padding: 0;

@@ -2,8 +2,6 @@
 
 <jsp:include page="../include/cartHeader.jsp"/>
 
-
-
 <div class="card" style="width: 25rem; margin: 0 auto; float: none; margin-bottom: 100px; background: #d7e4ef">
 <c:choose>
 
@@ -28,21 +26,9 @@
     </div>
     <c:forEach items="${bindingResult.getFieldErrors('name')}" var="error">
         <div style="color: red;">
-                ${error.getDefaultMessage()}
+            ${error.getDefaultMessage()}
         </div>
     </c:forEach>
-
-<%--    <div class="form-group">--%>
-<%--        <label for="nameId">Description </label>--%>
-<%--        <input type="text" name="desription" id="descriptionId" aria-describedby="descriptionHelp" placeholder="Enter description" value="${form.description}">--%>
-<%--        <small id="breedHelp" class="form-text text-muted">Please enter specific breed details</small>--%>
-<%--    </div>--%>
-<%--    <c:forEach items="${bindingResult.getFieldErrors('description')}" var="error">--%>
-<%--        <div style="color: red;">--%>
-<%--                ${error.getDefaultMessage()}--%>
-<%--        </div>--%>
-<%--    </c:forEach>--%>
-<%--    <br>--%>
 
     <div class="form-group card-body" style="margin-bottom: 0px; padding-top: 0px;">
         <label for="descriptionId">Description: </label>
@@ -89,20 +75,11 @@
 
     </div>
 
-
-
-
-<%--        <input type="text" name="image" id="imageId" aria-describedby="sexHelp" placeholder="Enter image" value="${form.image}">--%>
-
     <c:forEach items="${bindingResult.getFieldErrors('image')}" var="error">
         <div style="color: red;">
                 ${error.getDefaultMessage()}
         </div>
     </c:forEach>
-
-    <%--    <br>--%>
-    <%--    Check Box<input type="checkbox" name="checkbox">--%>
-    <%--    <br>--%>
 
     <div class="container">
         <div class="row">

@@ -345,9 +345,6 @@
                 </div>
             </c:if>
 
-
-
-
             <%--DESRIPTION--%>
             <c:if test="${not empty form.blurb}">
                 <div class="text-center mt-4 stat">Your Tagline: </div>

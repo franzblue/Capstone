@@ -9,7 +9,6 @@
 </script>
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
-
         <c:if test="${empty cartItems[0].shoppingCart.user.username}">
             <h1>Your Cart Is Empty</h1>
             <h2 id="totalDue">TOTAL AMOUNT DUE: </h2>
@@ -24,28 +23,9 @@
 
 <c:forEach items="${cartItems}" var="item">
 
-<%--    <b>Complete Product: ${item.product}</b>--%>
-
-<%--    <p>Username: ${item.shoppingCart.user.username}</p>--%>
-<%--    <p>Name: ${item.product.name}</p>--%>
-<%--    <p>Name: ${item.product.description}</p>--%>
-
-<%--    <c:choose>--%>
-<%--        <c:when test="${item.product.sale == 0}">--%>
-<%--            <p>Price: $${item.product.price}.00</p>--%>
-<%--        </c:when>--%>
-<%--        <c:otherwise>--%>
-<%--            <b>On sale!</b>--%>
-<%--            <p>Price: $${item.product.sale}.00</p>--%>
-<%--        </c:otherwise>--%>
-<%--    </c:choose>--%>
-
-<%--    <p>Quantity: ${item.quantity}</p>--%>
-<%--    <p>Total: $${item.quantity * item.product.price}.00</p>--%>
-
     <div class="col mb-5">
         <div class="card h-100">
-        <img class="card-img-top" src="${item.product.image}" alt="Card image cap">
+            <img class="card-img-top" src="${item.product.image}" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">${item.product.name}</h5>
             <p class="card-text">${item.product.description}</p>
@@ -60,9 +40,7 @@
             </c:choose>
             <p class="card-text">Quantity: ${item.quantity}</p>
         </div>
-
             <button class="btn btn-outline-danger mt-auto" onclick="removeFromCart(${item.id})" type="button">Remove From Cart</button>
-
             <c:choose>
                 <c:when test="${item.product.sale == 0}">
                     <div class="card-footer">
@@ -75,7 +53,7 @@
                     </div>
                 </c:otherwise>
             </c:choose>
-    </div>
+        </div>
     </div>
 
     <script>
