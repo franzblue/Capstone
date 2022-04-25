@@ -15,12 +15,6 @@ public interface UserDAO extends JpaRepository<User, Long> {
 
     User findUserByEmail(@Param("email") String email);
 
-    List<User> findUsersByFirstName(@Param("firstName") String firstName);
-
-    List<User> findUsersByFirstNameAndLastName(@Param("firstName") String firstName, @Param("lastName") String lastName);
-
-    List<User> findByFirstNameIgnoreCaseContaining(@Param("firstName") String firstName);
-
     User findUserByUsername(String currentPrincipleName);
 
     @Query(value = "SELECT * FROM users ORDER BY id", nativeQuery = true)

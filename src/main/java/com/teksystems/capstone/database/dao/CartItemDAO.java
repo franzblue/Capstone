@@ -1,9 +1,7 @@
 package com.teksystems.capstone.database.dao;
 
-import com.teksystems.capstone.database.entity.Animal;
 import com.teksystems.capstone.database.entity.CartItem;
 import com.teksystems.capstone.database.entity.ShoppingCart;
-import com.teksystems.capstone.database.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

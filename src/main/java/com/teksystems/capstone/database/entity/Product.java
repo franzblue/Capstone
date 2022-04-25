@@ -1,12 +1,10 @@
 package com.teksystems.capstone.database.entity;
 
 import lombok.*;
-import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.Min;
-import java.util.Set;
+
 
 @Getter
 @Setter
@@ -40,9 +38,5 @@ public class Product {
 
     @Column(name = "image")
     private String image;
-
-//    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY,
-//            cascade = CascadeType.ALL)
-//    private Set<OrderProduct> orderProducts;
 
 }
