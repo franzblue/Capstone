@@ -1,14 +1,8 @@
 package com.teksystems.capstone.formBean;
 
-import com.teksystems.capstone.validation.EmailUnique;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.validator.constraints.Length;
-
-import javax.validation.constraints.AssertTrue;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 
 @Getter
 @Setter

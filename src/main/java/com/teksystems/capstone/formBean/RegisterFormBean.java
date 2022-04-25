@@ -6,7 +6,6 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.validator.constraints.Length;
 
-import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
@@ -15,8 +14,6 @@ import javax.validation.constraints.Pattern;
 @ToString
 public class RegisterFormBean {
 
-    // This id will be null in the case of a create
-    // and will be populated with the user id in the case of an edit
     private Integer id;
 
     @NotBlank(message = "First name may not be empty.")

@@ -1,10 +1,8 @@
 package com.teksystems.capstone.formBean;
 
-import com.teksystems.capstone.validation.EmailUnique;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.*;
 
@@ -36,4 +34,3 @@ public class AnimalTableBean {
 
     private String image;
 }
-
