@@ -3,10 +3,7 @@ package com.teksystems.capstone.controller;
 
 import com.teksystems.capstone.database.dao.AnimalDAO;
 import com.teksystems.capstone.database.entity.Animal;
-import com.teksystems.capstone.database.entity.Product;
-import com.teksystems.capstone.database.entity.User;
 import com.teksystems.capstone.formBean.AnimalTableBean;
-import com.teksystems.capstone.formBean.RegisterFormBean;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -22,9 +19,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.io.File;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Slf4j
@@ -50,30 +44,6 @@ public class AnimalController {
 
         response.addObject("animals", animals);
 
-//        AnimalTableBean form = new AnimalTableBean();
-//
-//
-//        ArrayList<AnimalTableBean> arr = new ArrayList<AnimalTableBean>();
-//        for(int i = 0; i < animals.size(); i++) {
-//            form.setId(animals.get(i).getId());
-//            form.setName(animals.get(i).getName());
-//            form.setSpecies(animals.get(i).getSpecies());
-//            form.setBreed(animals.get(i).getBreed());
-//            form.setDescription(animals.get(i).getDescription());
-//            form.setAge(animals.get(i).getAge());
-//            form.setSex(animals.get(i).getSex());
-//            form.setImage(animals.get(i).getImage());
-//            arr.add(form);
-//
-//            log.info("inside loop");
-//        }
-
-        log.info(response.toString());
-
-
-
-        log.info(response.getModel().toString());
-
         return response;
     }
 
@@ -94,10 +64,7 @@ public class AnimalController {
     public ModelAndView animalSearch(@RequestParam(name = "searchId", required = false, defaultValue = "") String searchValue) {
         ModelAndView response = new ModelAndView();
         response.setViewName("animal/table");
-        log.info(searchValue);
 
-
-        // very basic example of error checking
         if(!StringUtils.isBlank(searchValue)) {
             List<Animal> animals = animalDao.findAnimalsByNameContainingOrSpeciesContainingOrBreedContainingOrDescriptionContainingOrSexContaining(searchValue,searchValue,searchValue,searchValue,searchValue);
             response.addObject("animals", animals);
@@ -142,8 +109,6 @@ public class AnimalController {
         ModelAndView response = new ModelAndView();
         response.setViewName("animal/table");
 
-        log.info("value", searchValue);
-
         if(searchValue == 6) {
             List<Animal> animals = animalDao.findAnimalsByAgeLessThan(searchValue);
             response.addObject("animals", animals);
@@ -174,7 +139,6 @@ public class AnimalController {
     public ModelAndView registerAnimalSubmit(@RequestParam("file") MultipartFile file, @Valid AnimalTableBean form, BindingResult bindingResult) throws Exception {
         ModelAndView response = new ModelAndView();
 
-        log.info(form.toString());
 
         if (bindingResult.hasErrors()) {
 
@@ -210,12 +174,9 @@ public class AnimalController {
         animal.setAge(form.getAge());
         animal.setSex(form.getSex());
 
-
         animalDao.save(animal);
 
         response.setViewName("redirect:/animal/table/" + animal.getSpecies());
-
-//        response.setViewName("animal/addAnimal");
 
         return response;
     }

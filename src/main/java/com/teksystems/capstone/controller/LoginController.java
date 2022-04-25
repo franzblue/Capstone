@@ -31,7 +31,6 @@ public class LoginController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-
     @RequestMapping(value = "/login/login", method = RequestMethod.GET)
     public ModelAndView login() throws Exception {
         ModelAndView response = new ModelAndView();
@@ -55,8 +54,6 @@ public class LoginController {
     public ModelAndView registerSubmit(@Valid RegisterFormBean form, BindingResult bindingResult) throws Exception {
         ModelAndView response = new ModelAndView();
 
-        log.info(form.toString());
-
         if (bindingResult.hasErrors()) {
 
             for (ObjectError error : bindingResult.getAllErrors()) {
@@ -75,8 +72,6 @@ public class LoginController {
         if (user == null) {
             user = new User();
         }
-
-        // need a bunch if if else statements checking for null values
 
         user.setEmail(form.getEmail());
         user.setFirstName(form.getFirstName());

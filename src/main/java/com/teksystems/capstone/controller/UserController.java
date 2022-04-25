@@ -2,9 +2,7 @@ package com.teksystems.capstone.controller;
 
 import com.teksystems.capstone.database.dao.UserDAO;
 import com.teksystems.capstone.database.dao.UserRoleDAO;
-import com.teksystems.capstone.database.entity.Animal;
 import com.teksystems.capstone.database.entity.User;
-import com.teksystems.capstone.database.entity.UserRole;
 import com.teksystems.capstone.formBean.EditFormBean;
 import com.teksystems.capstone.formBean.RegisterFormBean;
 import lombok.extern.slf4j.Slf4j;
@@ -40,10 +38,6 @@ public class UserController {
     @Autowired
     private UserRoleDAO userRoleDao;
 
-
-//    @PathVariable("roleUserId") Integer roleUserId
-//    @RequestParam(name = "roleUserId",required= false) Integer roleUserId
-
     @RequestMapping(value = "/user/changeRole", method = RequestMethod.GET)
     public void changeRole(@RequestParam(name = "roleId", required= false) Integer roleId) throws Exception {
 
@@ -56,8 +50,6 @@ public class UserController {
         }
 
         userDao.save(user);
-
-
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")
@@ -86,7 +78,6 @@ public class UserController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentPrincipleName = authentication.getName();
         User loggedInUser = userDao.findUserByUsername(currentPrincipleName);
-
 
         RegisterFormBean form = new RegisterFormBean();
 
@@ -136,7 +127,6 @@ public class UserController {
         form.setDescription(user.getDescription());
         form.setBlurb(user.getBlurb());
 
-        // in this case we are adding the RegisterFormBean to the model
         response.addObject("form", form);
 
         return response;
@@ -147,12 +137,9 @@ public class UserController {
         ModelAndView response = new ModelAndView();
         response.setViewName("redirect:/user/profile");
 
-        log.info(form.toString());
-
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentPrincipleName = authentication.getName();
         User loggedInUser = userDao.findUserByUsername(currentPrincipleName);
-        log.info(loggedInUser.toString());
 
         if (bindingResult.hasErrors()) {
 
@@ -171,7 +158,6 @@ public class UserController {
 
         User user = userDao.findById(loggedInUser.getId());
 
-
         user.setEmail(loggedInUser.getEmail());
         user.setId(loggedInUser.getId());
         user.setPassword(loggedInUser.getPassword());
@@ -181,7 +167,6 @@ public class UserController {
         form.setId(loggedInUser.getId());
         form.setPassword(loggedInUser.getPassword());
         form.setUsername(loggedInUser.getUsername());
-
 
         if(form.getFirstName().equals(loggedInUser.getFirstName())) {
             user.setFirstName(loggedInUser.getFirstName());
@@ -251,14 +236,7 @@ public class UserController {
             user.setDescription(form.getDescription());
         }
 
-
-
-
-        log.info("Edit User: ", user.toString());
-
         userDao.save(user);
-
-
 
         response.addObject("form", form);
 
@@ -286,12 +264,8 @@ public class UserController {
     public ModelAndView uploadPicture(@RequestParam("file") MultipartFile file) throws Exception {
         ModelAndView response = new ModelAndView();
         response.setViewName("redirect:/user/profile");
-        log.info("original file name: " + file.getOriginalFilename() + "file size: " + file.getSize());
-
-//        File targetFile = new File("\Downloads\" + file.getOriginalFilename());
 
         File targetFile = new File("/Users/franzblue/Desktop/Capstone/src/main/webapp/pub/images/" + file.getOriginalFilename());
-
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentPrincipleName = authentication.getName();
@@ -431,21 +405,6 @@ public class UserController {
         ModelAndView response = new ModelAndView();
         response.setViewName("user/search");
         User user = userDao.findById(userId);
-
-//        user.setFirstName(null);
-//        user.setLastName(null);
-//        user.setEmail(null);
-//        user.setUsername(null);
-//        user.setPassword(null);
-//        user.setDogLove(null);
-//        user.setCatLove(null);
-//        user.setSmallLove(null);
-//        user.setImage(null);
-//        user.setTelephone(null);
-//        user.setAddress(null);
-//        user.setDescription(null);
-//        user.setBlurb(null);
-//        user.setRole(null);
 
         userDao.delete(user);
         return response;
