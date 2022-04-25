@@ -56,9 +56,9 @@
         <div class="col-lg-6">
             <div class="text-left">
                 <h1>Welcome</h1>
-                <p style="font-size: 20px;"><b>All Paws On Deck!</b> is a web based application designed to connect people with future animal companions.
+                <p style="font-size: 20px;"><b>All Paws On Deck!</b> is a web based application designed to connect people with their future animal companions.
                         You are free to create a profile filled out with personal preferences relating to finding your next pet.
-                        You will then be able to search through our database of animals to help make a decision.
+                        You will then be able to search through our database of animals to help make a decision on what animal best suits your needs.
                         An online shop is also available to purchase everyday essentials for your animal -
                         simply add products to your cart and checkout whenever you are ready!</p>
                 <hr>
